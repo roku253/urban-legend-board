@@ -3,26 +3,487 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>都市伝説掲示板 · 裏スレ</title>
+  <title>野良怪談＠裏板 — トップ</title>
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 42rem; margin: 2rem auto; padding: 0 1rem;
-      background: #0f0f12; color: #ddd; line-height: 1.6; }
-    h1 { font-size: 1.1rem; color: #9cf; border-bottom: 1px solid #333; padding-bottom: 0.5rem; }
-    .thread { background: #1a1a20; border: 1px solid #333; padding: 1rem; margin: 1rem 0; border-radius: 6px; }
-    .meta { color: #888; font-size: 0.85rem; }
-    .hint { color: #fc8; margin-top: 0.75rem; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      padding: 0.5rem 0 2rem;
+      font-family: "MS PGothic", "MS Gothic", "Yu Gothic", Meiryo, sans-serif;
+      font-size: 12px;
+      line-height: 1.45;
+      color: #333;
+      background: #efe8d8;
+      word-break: break-word;
+    }
+    a { color: #0000c0; }
+    a:visited { color: #551a8b; }
+    a:hover { color: #c00; }
+
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 8px; }
+
+    /* トップの大きい題名 */
+    .board-title {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: bold;
+      color: #1a1a1a;
+      letter-spacing: 0.02em;
+      margin: 0.5rem 0 0.15rem;
+      text-shadow: 1px 1px 0 #fff;
+    }
+    .board-sub {
+      font-size: 11px;
+      color: #555;
+      margin: 0 0 0.75rem;
+    }
+
+    .path {
+      font-size: 11px;
+      color: #444;
+      border-bottom: 1px solid #b8a88c;
+      padding-bottom: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .path strong { color: #222; }
+
+    .panel {
+      background: #f5f0e6;
+      border: 1px solid #b8a88c;
+      margin-bottom: 0.75rem;
+    }
+    .panel-h {
+      background: linear-gradient(180deg, #d4c4a8 0%, #c4b498 100%);
+      border-bottom: 1px solid #a89878;
+      padding: 4px 8px;
+      font-weight: bold;
+      font-size: 13px;
+      color: #210;
+    }
+    .panel-b { padding: 8px; }
+
+    .thread-list { margin: 0; padding: 0; list-style: none; }
+    .thread-list li {
+      border-bottom: 1px dotted #b8a88c;
+      padding: 5px 4px;
+    }
+    .thread-list li:last-child { border-bottom: none; }
+    .thread-list .cnt { color: #666; font-size: 11px; margin-left: 4px; }
+
+    .thread-box {
+      background: #faf8f2;
+      border: 1px solid #b8a88c;
+      margin-bottom: 1.25rem;
+    }
+    .thread-head {
+      background: #e8dfd0;
+      border-bottom: 1px solid #b8a88c;
+      padding: 6px 8px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .thread-head a { text-decoration: none; color: #0000c0; }
+    .thread-head a:hover { text-decoration: underline; }
+
+    .res {
+      padding: 8px 10px;
+      border-bottom: 1px solid #ddd5c8;
+    }
+    .res:last-child { border-bottom: none; }
+    .res-num { color: #e04040; font-weight: bold; margin-right: 6px; }
+    .res-name { color: #117743; font-weight: bold; }
+    .res-date { color: #666; font-size: 11px; margin-left: 6px; }
+    .res-body { margin: 6px 0 0 1.2em; color: #222; }
+    .res-body .gt { color: #789922; }
+    .hint-line { color: #8b4513; font-weight: bold; margin-top: 0.5rem; }
+
+    .form-block {
+      margin-top: 8px;
+      padding: 8px;
+      background: #e8e0d4;
+      border: 1px dashed #a09078;
+      font-size: 11px;
+      color: #444;
+    }
+    .form-block label { display: block; margin-bottom: 4px; }
+    .form-block textarea {
+      width: 100%;
+      min-height: 56px;
+      font-family: inherit;
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .form-block button {
+      font-size: 12px;
+      padding: 4px 12px;
+      cursor: pointer;
+    }
+    .back-top { font-size: 11px; margin-top: 8px; }
+
+    .post-deny-msg {
+      display: none;
+      margin-top: 8px;
+      padding: 10px;
+      background: #fff8e8;
+      border: 2px solid #c90;
+      color: #520;
+      line-height: 1.65;
+      font-size: 12px;
+      white-space: pre-wrap;
+    }
+    .post-deny-msg.show { display: block; }
   </style>
 </head>
 <body>
-  <h1>■ 神隠し · 行方不明スレ 【閲覧注意】</h1>
-  <div class="thread">
-    <p class="meta">1: 名無しさん 2026/05/04(月) 22:14</p>
-    <p>近所の少年、公園で消えたって話きいた。警察も動いてるらしい。</p>
-    <p class="hint">（ここに第一ヒント：例・キーワードや次の場所の伏線を書く）</p>
+  <div class="wrap">
+    <h1 class="board-title">野良怪談 裏交流板</h1>
+    <p class="board-sub">※個人が趣味で稼働 · 実在のサービスとは無関係です</p>
+
+    <div class="path">
+      <a href="#top">トップ</a>
+      ＞ <strong>裏怪談 · ローカルスレッド一覧</strong>
+    </div>
+
+    <div class="panel" id="top">
+      <div class="panel-h">スレッド一覧（タップ／クリックでジャンプ）</div>
+      <div class="panel-b">
+        <ul class="thread-list">
+          <li>
+            <a href="#thread-shinnyu">■ 神隠し・行方不明の少年スレ Part.47【閲覧注意】</a>
+            <span class="cnt">（847）</span>
+          </li>
+          <li>
+            <a href="#thread-neet">■ ニートの部屋　無職歴がついに西暦を超えそう Part.103</a>
+            <span class="cnt">（1203）</span>
+          </li>
+          <li>
+            <a href="#thread-cat">■ うちの猫だけ時差ボケしてるんだけど Part.12</a>
+            <span class="cnt">（89）</span>
+          </li>
+          <li>
+            <a href="#thread-konbini">■ 近所のコンビニのレジ画面に謎の英単語が出る件</a>
+            <span class="cnt">（56）</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- メイン（謎）スレ -->
+    <article class="thread-box" id="thread-shinnyu">
+      <div class="thread-head">
+        <a href="#thread-shinnyu">■ 神隠し・行方不明の少年スレ Part.47【閲覧注意】</a>
+      </div>
+
+      <div class="res">
+        <span class="res-num">1</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/01(金) 19:02:11 ID:Ab3xYz9K</span>
+        <div class="res-body">
+          郊外在住の少年が夏祭りの帰りに消えたって話、こっちの県でもちらほら聞く。<br />
+          当初は迷子扱いだったらしいけど、今はもう誰もそう言わない。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">2</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/01(金) 19:14:33 ID:Kf2mNp0Q</span>
+        <div class="res-body">
+          <span class="gt">&gt;1</span><br />
+          祭りの夜、提灯の列だけが道を進んでるの見たって親が言ってた。子供はいなかったらしい。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">3</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/01(金) 20:01:02 ID:Zz9wRt4H</span>
+        <div class="res-body">
+          警察の白バイより先に、なんか民間っぽい黒い車が現場入りしてたって噂あるけどガセ？
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">4</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/01(金) 21:22:18 ID:Lp8sVc1M</span>
+        <div class="res-body">
+          ガセじゃないかも。うちの叔父が消防団で聞いた話だと、公園の砂場だけ妙に整地されてたとか。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">5</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/02(土) 08:45:55 ID:Qx4nBm7J</span>
+        <div class="res-body">
+          民俗学オタだと神隠しのパターンに似てるって言ってた。事故単体じゃ説明つかないらしい。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">6</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/02(土) 11:03:41 ID:Ty1kHg6R</span>
+        <div class="res-body">
+          ネットの古いスレに「肩越しに誰かが同じ歩幅で重なる」みたいな書き込み残ってない？消されかけてるやつ。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">7</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/02(土) 14:28:09 ID:Ws5pDf3N</span>
+        <div class="res-body">
+          <span class="gt">&gt;6</span><br />
+          ある。キャッシュ辿ったら断片だけ見えた。URLは貼れないけど「灯籠スレ」のミラーって検索で出る時ある。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">8</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/02(土) 16:55:22 ID:Uv7jKl2S</span>
+        <div class="res-body">
+          公式が第一ヒント置くなら変な置き方するよな。都市伝説系の板の「見た目は普通のコピペ」に紛れさせるタイプ。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">9</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/02(土) 18:12:44 ID:Hx9cVb4T</span>
+        <div class="res-body">
+          近所の少年、公園で消えたって話きいた。警察も動いてるらしい。<br />
+          マジで何があったのか誰も教えてくれない。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">10</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/02(土) 19:31:07 ID:Mn2qWe8Y</span>
+        <div class="res-body">
+          <span class="gt">&gt;7</span><br />
+          ミラー、ここにまとまってた。ページ内に「最初の足がかり」だけ置いてあるっぽい。<br />
+          <span class="hint-line">▼ 第一ヒントの置き場（ミラー）</span><br />
+          <a href="https://roku253.github.io/urban-legend-board/" rel="noopener">https://roku253.github.io/urban-legend-board/</a>
+          <br /><small style="color:#666;">※上はこの板のミラー兼トップ。本スレと同一ホストの別ページに見えるよう鏡像してあるらしい（噂）</small>
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">11</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/02(土) 20:44:51 ID:Bc6nXz1A</span>
+        <div class="res-body">
+          <span class="gt">&gt;10</span><br />
+          それ自分の貼ったURLじゃねｗｗｗ ミラーじゃなくてこの板だろ
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">12</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/02(土) 21:08:33 ID:Df4mLp0K</span>
+        <div class="res-body">
+          いやメタい設定なんじゃないの　調査側がこの板を参照するって文脈
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">13</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/03(日) 01:15:40 ID:Jg8sRt5Q</span>
+        <div class="res-body">
+          夜中だけスレの並びが変わるって都市伝説ない？　キャッシュクリアしたら元に戻るとか。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">14</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/03(日) 09:22:11 ID:Nk3vHy7W</span>
+        <div class="res-body">
+          スマホで見ると広告枠の裏に文字が隠れてる時ある。長押しでコピーできるやつ。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">15</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/03(日) 22:01:58 ID:Pz9mNb2C</span>
+        <div class="res-body">
+          とりあえず Part.48 立てる前に、ミラーの本文全部スクショ取っとけ。あとで消えるパターン。
+        </div>
+      </div>
+
+      <div class="form-block">
+        <strong>書き込む</strong>（※実際には反映されません）
+        <form class="fake-post" data-label="このスレ">
+          <label>コメント</label>
+          <textarea placeholder="＞＞レス先あれば番号 改行 本文"></textarea>
+          <button type="submit">書き込む</button>
+        </form>
+        <div class="post-deny-msg" aria-live="polite"></div>
+        <p class="back-top"><a href="#top">↑ スレッド一覧へ</a></p>
+      </div>
+    </article>
+
+    <!-- ダミースレ1 -->
+    <article class="thread-box" id="thread-neet">
+      <div class="thread-head">
+        <a href="#thread-neet">■ ニートの部屋　無職歴がついに西暦を超えそう Part.103</a>
+      </div>
+      <div class="res">
+        <span class="res-num">1</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/04/28(火) 14:02:01 ID:Ne7tAa0B</span>
+        <div class="res-body">
+          今年も確定申告しなかった。もはや市民としての自覚が薄れてきた。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">2</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/04/28(火) 14:15:22 ID:Cd4fGh8I</span>
+        <div class="res-body">
+          <span class="gt">&gt;1</span><br />
+          それ税務署が見たら泣くやつ
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">3</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/04/29(水) 03:44:19 ID:Ij2kLm5N</span>
+        <div class="res-body">
+          昼と夜が逆転した。朝起きたら夕方。もう勝ち確。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">4</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/04/30(木) 11:11:11 ID:Op9qRs3T</span>
+        <div class="res-body">
+          親に「就職したフリ」する技術、誰かマニュアルまとめて。
+        </div>
+      </div>
+      <div class="form-block">
+        <strong>書き込む</strong>
+        <form class="fake-post" data-label="ニートスレ">
+          <label>コメント</label>
+          <textarea></textarea>
+          <button type="submit">書き込む</button>
+        </form>
+        <div class="post-deny-msg"></div>
+        <p class="back-top"><a href="#top">↑ スレッド一覧へ</a></p>
+      </div>
+    </article>
+
+    <!-- ダミースレ2 -->
+    <article class="thread-box" id="thread-cat">
+      <div class="thread-head">
+        <a href="#thread-cat">■ うちの猫だけ時差ボケしてるんだけど Part.12</a>
+      </div>
+      <div class="res">
+        <span class="res-num">1</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/03(日) 07:12:00 ID:Ca7tXx1Y</span>
+        <div class="res-body">
+          家族全員JSTなのに、猫だけGMT+4くらいの生活してる。3時に全力で走り回る。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">2</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/03(日) 08:01:33 ID:Zb3nMm9K</span>
+        <div class="res-body">
+          それ猫じゃなくて飼い主の観測がおかしい説
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">3</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/03(日) 12:45:10 ID:Lq5wEr2S</span>
+        <div class="res-body">
+          うちは猫が2重人格。朝は「にゃ」夜は「フンッ」って鼻で笑う。
+        </div>
+      </div>
+      <div class="form-block">
+        <strong>書き込む</strong>
+        <form class="fake-post" data-label="猫スレ">
+          <label>コメント</label>
+          <textarea></textarea>
+          <button type="submit">書き込む</button>
+        </form>
+        <div class="post-deny-msg"></div>
+        <p class="back-top"><a href="#top">↑ スレッド一覧へ</a></p>
+      </div>
+    </article>
+
+    <!-- ダミースレ3 -->
+    <article class="thread-box" id="thread-konbini">
+      <div class="thread-head">
+        <a href="#thread-konbini">■ 近所のコンビニのレジ画面に謎の英単語が出る件</a>
+      </div>
+      <div class="res">
+        <span class="res-num">1</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/04(月) 18:20:44 ID:Ko8bIn3I</span>
+        <div class="res-body">
+          「PENDING」「OVERRIDE」みたいな単語が一瞬だけ出る。店員に聞いても知らない顔。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">2</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/04(月) 18:33:12 ID:Vn4jKl6M</span>
+        <div class="res-body">
+          メンテ用のデバッグ画面が誤表示されてんじゃね　陰謀厨は静かにして
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">3</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/04(月) 19:05:00 ID:Qw2sTy9U</span>
+        <div class="res-body">
+          でも同じ店で3人が別日に見てる。バグなら再現性高すぎ。
+        </div>
+      </div>
+      <div class="form-block">
+        <strong>書き込む</strong>
+        <form class="fake-post" data-label="コンビニスレ">
+          <label>コメント</label>
+          <textarea></textarea>
+          <button type="submit">書き込む</button>
+        </form>
+        <div class="post-deny-msg"></div>
+        <p class="back-top"><a href="#top">↑ スレッド一覧へ</a></p>
+      </div>
+    </article>
+
+    <!-- 新規スレッド（ダミー） -->
+    <div class="panel">
+      <div class="panel-h">新規スレッドを立てる（※実際には立ちません）</div>
+      <div class="panel-b">
+        <form class="fake-post" data-label="新規スレ">
+          <label>スレッドタイトル</label>
+          <textarea style="min-height:36px" placeholder="例：■ 近所の〇〇について Part.1"></textarea>
+          <label>最初のレス</label>
+          <textarea></textarea>
+          <button type="submit">スレッドを立てる</button>
+        </form>
+        <div class="post-deny-msg"></div>
+      </div>
+    </div>
+
+    <p style="font-size:10px;color:#777;margin-top:1rem;">
+      このHTMLは静的ページです。書き込み機能はありません。
+    </p>
   </div>
-  <div class="thread">
-    <p class="meta">2: 名無しさん 2026/05/04(月) 22:31</p>
-    <p>あの掲示板、夜だけ別のURLに飛ぶって都市伝説ない？</p>
-  </div>
+
+  <script>
+    (function () {
+      var msg =
+        "このサイトはそろそろサービスを終了するため（管理者が飽きたため( ´∀｀)）\n" +
+        "新規スレッド・書き込みは受け付けていません。\n" +
+        "閲覧だけにしてください。";
+      document.querySelectorAll(".fake-post").forEach(function (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var box = form.parentElement && form.parentElement.querySelector(".post-deny-msg");
+          if (!box) return;
+          box.textContent = msg;
+          box.classList.add("show");
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
