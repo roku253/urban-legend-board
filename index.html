@@ -119,6 +119,11 @@
       box-sizing: border-box;
       resize: none;
     }
+    .form-block textarea.thread-title-input {
+      height: 36px;
+      min-height: 36px;
+      max-height: 36px;
+    }
     .form-block button {
       font-size: 12px;
       padding: 4px 12px;
@@ -538,17 +543,19 @@
 
     <!-- 新規スレッド（ダミー） -->
     <div class="form-block">
-      <div class="fake-post">新規スレッドを立てる</div>
-      <div class="fake-post">
-        <form class="fake-post" data-label="新規スレ">
-          <label>スレッドタイトル</label>
-          <textarea style="min-height:36px" placeholder="例：■ 近所の〇〇について Part.1"></textarea>
-          <label>最初のレス</label>
-          <textarea></textarea>
-          <button type="submit">スレッドを立てる</button>
-        </form>
-        <div class="post-deny-msg"></div>
-      </div>
+      <strong>新規スレッドを立てる</strong>
+      <form class="fake-post" data-label="新規スレ">
+        <label>スレッドタイトル</label>
+        <textarea
+          class="thread-title-input"
+          placeholder="例：■ 近所の〇〇について Part.1"
+        ></textarea>
+        <label>最初のレス</label>
+        <textarea></textarea>
+        <button type="submit">スレッドを立てる</button>
+      </form>
+      <div class="post-deny-msg" aria-live="polite"></div>
+      <p class="back-top"><a href="#top">↑ スレッド一覧へ</a></p>
     </div>
 
     <p style="font-size:10px;color:#777;margin-top:1rem;">
@@ -576,7 +583,7 @@
         "このサイトはそろそろサービスを終了するため（管理者が飽きたため( ´∀｀)）\n" +
         "新規スレッド・書き込みは受け付けていません。\n" +
         "閲覧だけにしてください。";
-      document.querySelectorAll(".fake-post").forEach(function (form) {
+      document.querySelectorAll("form.fake-post").forEach(function (form) {
         form.addEventListener("submit", function (e) {
           e.preventDefault();
           var box = form.parentElement && form.parentElement.querySelector(".post-deny-msg");
