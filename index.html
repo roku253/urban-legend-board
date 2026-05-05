@@ -557,7 +557,7 @@
       function syncTimedThread() {
         var now = new Date();
         var minutes = now.getHours() * 60 + now.getMinutes();
-        var start = 18 * 60 + 50;   // 18:50
+        var start = 19 * 60 + 50;   // 18:50
         var end = start + 60;       // 19:50（未満）
         var hit = minutes >= start && minutes < end;
         var li = document.getElementById("timed-thread-link");
