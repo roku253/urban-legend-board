@@ -560,9 +560,10 @@
     (function () {
       function syncTimedThread() {
         var now = new Date();
-        var hh = String(now.getHours()).padStart(2, "0");
-        var mm = String(now.getMinutes()).padStart(2, "0");
-        var hit = (hh + ":" + mm) === "18:50";
+        var minutes = now.getHours() * 60 + now.getMinutes();
+        var start = 18 * 60 + 50;   // 18:50
+        var end = start + 60;       // 19:50（未満）
+        var hit = minutes >= start && minutes < end;
         var li = document.getElementById("timed-thread-link");
         var article = document.getElementById("thread-plate");
         var note = document.getElementById("timed-thread-note");
