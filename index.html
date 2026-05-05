@@ -69,6 +69,8 @@
     }
     .thread-list li:last-child { border-bottom: none; }
     .thread-list .cnt { color: #666; font-size: 11px; margin-left: 4px; }
+    .thread-list .timed-thread { display: none; }
+    .thread-list .timed-thread.show { display: block; }
 
     .thread-box {
       background: #faf8f2;
@@ -132,6 +134,25 @@
       white-space: pre-wrap;
     }
     .post-deny-msg.show { display: block; }
+    .timed-hint {
+      margin-top: 6px;
+      font-size: 11px;
+      color: #6b4a28;
+      background: #fff7dd;
+      border: 1px dashed #caa96a;
+      padding: 6px 8px;
+    }
+    .image-clue {
+      margin-top: 8px;
+      padding: 8px;
+      background: #fff;
+      border: 1px solid #ccbda5;
+    }
+    .image-clue .cap {
+      font-size: 11px;
+      color: #555;
+      margin: 0 0 4px;
+    }
   </style>
 </head>
 <body>
@@ -164,7 +185,14 @@
             <a href="#thread-konbini">■ 近所のコンビニのレジ画面に謎の英単語が出る件</a>
             <span class="cnt">（56）</span>
           </li>
+          <li id="timed-thread-link" class="timed-thread">
+            <a href="#thread-plate">■ 【速報】欠けた看板の地名、読める奴いる？</a>
+            <span class="cnt">（44）</span>
+          </li>
         </ul>
+        <p id="timed-thread-note" class="timed-hint" style="display:none;">
+          ※ この板では特定時刻（16:44）にのみ表示される保留スレがあります。
+        </p>
       </div>
     </div>
 
@@ -312,6 +340,66 @@
           <button type="submit">書き込む</button>
         </form>
         <div class="post-deny-msg" aria-live="polite"></div>
+        <p class="back-top"><a href="#top">↑ スレッド一覧へ</a></p>
+      </div>
+    </article>
+
+    <!-- 時間連動スレ（Task01 導線） -->
+    <article class="thread-box" id="thread-plate" style="display:none;">
+      <div class="thread-head">
+        <a href="#thread-plate">■ 【速報】欠けた看板の地名、読める奴いる？</a>
+      </div>
+      <div class="res">
+        <span class="res-num">1</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/05(火) 16:44:03 ID:Ti4mEd44</span>
+        <div class="res-body">
+          祭りの日に撮れたって写真。看板の文字が右側だけ欠けてる。<br />
+          地名わかるやついたら頼む。
+          <div class="image-clue">
+            <p class="cap">[画像A: 看板が欠けた写真]</p>
+            <p>「…み が ふ ち神社前」だけ読み取れる。先頭2文字が割れて消えてる。</p>
+          </div>
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">2</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/05(火) 16:44:20 ID:Bl0rImg9</span>
+        <div class="res-body">
+          別ルートで拾った背景ボケ写真。標識がピンボケだけど形は同じっぽい。
+          <div class="image-clue">
+            <p class="cap">[画像B: 背景がボケた写真]</p>
+            <p>標識下段に「かす…が…」の平仮名が見える。神社の鳥居マークあり。</p>
+          </div>
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">3</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/05(火) 16:44:39 ID:Os1nT44X</span>
+        <div class="res-body">
+          2枚合わせると「霞ヶ淵（かすみがふち）」で確定じゃないか？<br />
+          その地名、古い地図にしか出ないって聞いた。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">4</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2026/05/05(火) 16:45:01 ID:Tsk01Ops</span>
+        <div class="res-body">
+          追記：調査員向けメモ<br />
+          「地名をそのまま報告ワードに使え」
+        </div>
+      </div>
+      <div class="form-block">
+        <strong>書き込む</strong>
+        <form class="fake-post" data-label="欠け看板スレ">
+          <label>コメント</label>
+          <textarea></textarea>
+          <button type="submit">書き込む</button>
+        </form>
+        <div class="post-deny-msg"></div>
         <p class="back-top"><a href="#top">↑ スレッド一覧へ</a></p>
       </div>
     </article>
@@ -470,6 +558,19 @@
 
   <script>
     (function () {
+      function syncTimedThread() {
+        var now = new Date();
+        var hh = String(now.getHours()).padStart(2, "0");
+        var mm = String(now.getMinutes()).padStart(2, "0");
+        var hit = (hh + ":" + mm) === "16:44";
+        var li = document.getElementById("timed-thread-link");
+        var article = document.getElementById("thread-plate");
+        var note = document.getElementById("timed-thread-note");
+        if (li) li.classList.toggle("show", hit);
+        if (article) article.style.display = hit ? "block" : "none";
+        if (note) note.style.display = hit ? "block" : "none";
+      }
+
       var msg =
         "このサイトはそろそろサービスを終了するため（管理者が飽きたため( ´∀｀)）\n" +
         "新規スレッド・書き込みは受け付けていません。\n" +
@@ -483,6 +584,9 @@
           box.classList.add("show");
         });
       });
+
+      syncTimedThread();
+      setInterval(syncTimedThread, 15000);
     })();
   </script>
 </body>
