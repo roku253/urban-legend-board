@@ -162,9 +162,14 @@
       color: #555;
       margin: 0 0 4px;
     }
+    #site-root { visibility: hidden; }
+    html.token-gate-ok #site-root { visibility: visible; }
   </style>
+  <script>window.__TOKEN_RESOURCE_KEY__ = "ext:urban-legend-board"</script>
+  <script src="./token-gate.js" defer></script>
 </head>
 <body>
+  <div id="site-root">
   <div class="wrap">
     <h1 class="board-title">野良怪談 裏交流板</h1>
     <p class="board-sub">※個人が趣味で稼働 · 実在のサービスとは無関係です</p>
@@ -178,6 +183,10 @@
       <div class="panel-h">スレッド一覧（タップ／クリックでジャンプ）</div>
       <div class="panel-b">
         <ul class="thread-list">
+          <li>
+            <a href="#thread-kasumi">■ 霞ノ杜・水辺の丘周辺の噂スレ【地元限定】</a>
+            <span class="cnt">（312）</span>
+          </li>
           <li>
             <a href="#thread-shinnyu">■ 神隠し・行方不明の少年スレ Part.47【閲覧注意】</a>
             <span class="cnt">（847）</span>
@@ -204,6 +213,57 @@
         </p>
       </div>
     </div>
+
+    <!-- 霞ノ杜（ここにいる 導線） -->
+    <!-- TRACE:まだここにいます -->
+    <article class="thread-box" id="thread-kasumi">
+      <div class="thread-head">
+        <a href="#thread-kasumi">■ 霞ノ杜・水辺の丘周辺の噂スレ【地元限定】</a>
+      </div>
+      <div class="res">
+        <span class="res-num">1</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2024/09/14(土) 02:11:40 ID:Kn9mQz2P</span>
+        <div class="res-body">
+          県北の<strong>霞ノ杜</strong>って地名、ガチで霧ヤバいらしい。観光協会のサイト、古いキャッシュだと変な文言残ってるって聞いた。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">2</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2024/09/14(土) 09:03:22 ID:Lp0nRt3Q</span>
+        <div class="res-body">
+          <span class="gt">&gt;1</span><br />
+          公式のスポット一覧、六番目あたりに<strong>水辺の丘</strong>って載ってない？地図サイトのユーザピンとも被るらしい。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">3</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2024/09/14(土) 18:44:01 ID:Ws4vHy8K</span>
+        <div class="res-body">
+          この板のHTMLソース見た奴いる？　コメントに「まだここにいます」って直書きされててゾッとした。
+        </div>
+      </div>
+      <div class="res">
+        <span class="res-num">4</span>
+        <span class="res-name">名無しさん</span>
+        <span class="res-date">2024/09/15(日) 07:21:55 ID:Ty2kHg7R</span>
+        <div class="res-body">
+          動画サイトのPR、窓に人影いない？　あと小学校の活動記録、印刷するとだけ名前出るとか都市伝説。
+        </div>
+      </div>
+      <div class="form-block">
+        <strong>書き込む</strong>
+        <form class="fake-post" data-label="このスレ">
+          <label>コメント</label>
+          <textarea placeholder="＞＞レス先あれば番号 改行 本文"></textarea>
+          <button type="submit">書き込む</button>
+        </form>
+        <div class="post-deny-msg" aria-live="polite"></div>
+        <p class="back-top"><a href="#top">↑ スレッド一覧へ</a></p>
+      </div>
+    </article>
 
     <!-- メイン（謎）スレ -->
     <article class="thread-box" id="thread-shinnyu">
@@ -597,5 +657,6 @@
       setInterval(syncTimedThread, 15000);
     })();
   </script>
+  </div>
 </body>
 </html>
