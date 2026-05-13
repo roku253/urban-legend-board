@@ -164,8 +164,45 @@
     }
     #site-root { visibility: hidden; }
     html.token-gate-ok #site-root { visibility: visible; }
+
+    /* テーマ別 denied 画面（掲示板閉鎖の貼り紙風） */
+    .ns-denied-overlay {
+      position: fixed; inset: 0; z-index: 999999;
+      background: #efe8d8;
+      color: #333;
+      display: flex; align-items: center; justify-content: center;
+      font-family: "MS PGothic", "MS Gothic", "Yu Gothic", Meiryo, sans-serif;
+      padding: 20px;
+    }
+    .ns-denied-card {
+      max-width: 560px; width: 100%;
+      background: #fff8e8;
+      border: 2px solid #c90;
+      padding: 24px 22px;
+      box-shadow: 4px 4px 0 #b8a88c;
+    }
+    .ns-denied-card h1 {
+      margin: 0 0 12px; font-size: 18px; color: #520;
+      letter-spacing: 0.05em;
+    }
+    .ns-denied-card p { margin: 6px 0; font-size: 13px; line-height: 1.7; color: #410; }
+    .ns-denied-card .small { font-size: 11px; color: #755; margin-top: 14px; }
   </style>
   <script>window.__TOKEN_RESOURCE_KEY__ = "ext:urban-legend-board"</script>
+  <script>
+    window.__TOKEN_DENIED__ = function (msg) {
+      var el = document.createElement("div");
+      el.className = "ns-denied-overlay";
+      el.innerHTML =
+        '<div class="ns-denied-card">' +
+        '<h1>■ お知らせ ■</h1>' +
+        '<p>このページは現在、招待制の閲覧モードに切り替わっています。</p>' +
+        '<p>板を開くには、配布された経路（任務ポータル）からのアクセスが必要です。</p>' +
+        '<p class="small">' + String(msg || "").replace(/[<>]/g, "") + '</p>' +
+        '</div>';
+      document.documentElement.appendChild(el);
+    };
+  </script>
   <script src="./token-gate.js" defer></script>
 </head>
 <body>

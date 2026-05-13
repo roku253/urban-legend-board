@@ -1,34 +1,55 @@
 /**
- * 外部サイト用トークンゲート。
- * 1) ?token= がある場合は検証後に URL から除去
- * 2) sessionStorage に保存済みなら consume:false で再検証（アドレスバーは常に「普通のURL」）
- * 3) window.opener がある場合は任務ポータルへ postMessage でトークン要求（掲示板URLに token を載せない）
+ * 外部サイト用 トークンゲート（NSID + masterToken 方式）。
+ * URL に ?token= は載せない。アカウント単位の権利をスプレッドシートで確認する。
  *
- * TOKEN_GATE_ORIGIN を本番ポータルに合わせてください。
- * 各ページの <head> で window.__TOKEN_RESOURCE_KEY__ を設定してください。
+ * 必要な設定：
+ *  - TOKEN_GATE_ORIGIN: 任務ポータルのオリジン（postMessage 通信先＆Next API のホスト）
+ *  - <head> で window.__TOKEN_RESOURCE_KEY__ を設定（例: "ext:urban-legend-board"）
+ *
+ * 任意のフック：
+ *  - window.__TOKEN_DENIED__(message) でサイトの雰囲気に合った全面エラーを表示
+ *    （未定義時はデフォルトの黒画面オーバーレイ）
+ *
+ * 認証の取り方：
+ *  1) localStorage の ns_login_id / ns_master_token / ns_case_id を読む
+ *  2) 無ければ window.opener へ postMessage(NS_AUTH_REQUEST) で要求し、
+ *     ポータルから NS_AUTH_GRANT で受け取り localStorage に保存
+ *  3) /api/platform/validate-entitlement に POST して権利確認
  */
 ;(function () {
   var TOKEN_GATE_ORIGIN = "https://nazo-portal.vercel.app"
-  var STORAGE_KEY = "__ns_ext_token_v1"
-  var MSG_REQUEST = "NS_TOKEN_REQUEST"
-  var MSG_GRANT = "NS_TOKEN_GRANT"
+  var LS_LOGIN = "ns_login_id"
+  var LS_MASTER = "ns_master_token"
+  var LS_CASE = "ns_case_id"
+  var MSG_REQUEST = "NS_AUTH_REQUEST"
+  var MSG_GRANT = "NS_AUTH_GRANT"
 
-  function escapeHtml(s) {
-    return String(s)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/\"/g, "&quot;")
+  function readCreds() {
+    try {
+      return {
+        loginId: (localStorage.getItem(LS_LOGIN) || "").trim(),
+        masterToken: (localStorage.getItem(LS_MASTER) || "").trim(),
+        caseId: (localStorage.getItem(LS_CASE) || "").trim(),
+      }
+    } catch (e) {
+      return { loginId: "", masterToken: "", caseId: "" }
+    }
   }
 
-  function showDenied(msg) {
-    var m = document.createElement("div")
-    m.setAttribute(
-      "style",
-      "position:fixed;inset:0;z-index:999999;background:#0a0a0c;color:#e8e8ec;display:flex;align-items:center;justify-content:center;padding:24px;font-family:system-ui,sans-serif;text-align:center;"
-    )
-    m.innerHTML = "<div><p style=\"font-size:14px;opacity:.85\">" + escapeHtml(msg) + "</p></div>"
-    document.documentElement.appendChild(m)
+  function writeCreds(c) {
+    try {
+      if (c.loginId) localStorage.setItem(LS_LOGIN, String(c.loginId))
+      if (c.masterToken) localStorage.setItem(LS_MASTER, String(c.masterToken))
+      if (c.caseId) localStorage.setItem(LS_CASE, String(c.caseId))
+    } catch (e) {}
+  }
+
+  function clearCreds() {
+    try {
+      localStorage.removeItem(LS_LOGIN)
+      localStorage.removeItem(LS_MASTER)
+      localStorage.removeItem(LS_CASE)
+    } catch (e) {}
   }
 
   function cleanUrlToken() {
@@ -41,85 +62,153 @@
     } catch (e) {}
   }
 
-  function validate(token, consume) {
+  function defaultDenied(msg) {
+    var m = document.createElement("div")
+    m.setAttribute(
+      "style",
+      "position:fixed;inset:0;z-index:999999;background:#0a0a0c;color:#e8e8ec;display:flex;align-items:center;justify-content:center;padding:24px;font-family:system-ui,sans-serif;text-align:center;"
+    )
+    m.innerHTML =
+      "<div><p style=\"font-size:14px;opacity:.85\">" +
+      String(msg)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;") +
+      "</p></div>"
+    document.documentElement.appendChild(m)
+  }
+
+  function showDenied(msg) {
+    try {
+      if (typeof window.__TOKEN_DENIED__ === "function") {
+        window.__TOKEN_DENIED__(msg)
+        return
+      }
+    } catch (e) {}
+    defaultDenied(msg)
+  }
+
+  function callValidate(c) {
     var resourceKey = window.__TOKEN_RESOURCE_KEY__ || ""
-    fetch(TOKEN_GATE_ORIGIN + "/api/platform/validate-token", {
+    return fetch(TOKEN_GATE_ORIGIN + "/api/platform/validate-entitlement", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token: token, resourceKey: resourceKey, consume: consume }),
+      body: JSON.stringify({
+        loginId: c.loginId,
+        masterToken: c.masterToken,
+        caseId: c.caseId,
+        resourceKey: resourceKey,
+      }),
+    }).then(function (r) {
+      return r.json()
     })
-      .then(function (r) {
-        return r.json()
-      })
-      .then(function (data) {
-        if (data && data.valid === true) {
-          cleanUrlToken()
-          try {
-            sessionStorage.setItem(STORAGE_KEY, token)
-          } catch (e) {}
-          document.documentElement.classList.add("token-gate-ok")
+  }
+
+  function bootstrapFromOpener() {
+    return new Promise(function (resolve) {
+      if (!window.opener || window.opener.closed) {
+        resolve(null)
+        return
+      }
+      var finished = false
+      var tries = 0
+      var poll = setInterval(function () {
+        if (finished) return
+        tries++
+        if (tries > 80) {
+          clearInterval(poll)
+          if (!finished) resolve(null)
           return
         }
         try {
-          sessionStorage.removeItem(STORAGE_KEY)
+          window.opener.postMessage(
+            { type: MSG_REQUEST, resourceKey: window.__TOKEN_RESOURCE_KEY__ || "" },
+            TOKEN_GATE_ORIGIN
+          )
         } catch (e) {}
-        showDenied((data && data.message) || "アクセス権限がありません。")
-      })
-      .catch(function () {
-        try {
-          sessionStorage.removeItem(STORAGE_KEY)
-        } catch (e) {}
-        showDenied("検証サーバーに接続できませんでした。")
-      })
+      }, 250)
+
+      function onGrant(ev) {
+        if (ev.origin !== TOKEN_GATE_ORIGIN) return
+        if (!ev.data || ev.data.type !== MSG_GRANT) return
+        finished = true
+        clearInterval(poll)
+        window.removeEventListener("message", onGrant)
+        var c = {
+          loginId: String(ev.data.loginId || "").trim(),
+          masterToken: String(ev.data.masterToken || "").trim(),
+          caseId: String(ev.data.caseId || "").trim(),
+        }
+        if (c.loginId && c.masterToken && c.caseId) {
+          writeCreds(c)
+          resolve(c)
+        } else {
+          resolve(null)
+        }
+      }
+      window.addEventListener("message", onGrant)
+    })
   }
 
-  var params = new URLSearchParams(window.location.search)
-  var fromQuery = params.get("token")
-  if (fromQuery) {
-    validate(fromQuery, true)
-    return
+  function applyValidation(data) {
+    if (data && data.valid === true) {
+      cleanUrlToken()
+      document.documentElement.classList.add("token-gate-ok")
+      return true
+    }
+    return false
   }
 
-  try {
-    var cached = sessionStorage.getItem(STORAGE_KEY)
-    if (cached) {
-      validate(cached, false)
+  function denyFromValidation(data) {
+    var msg = (data && data.message) || "アクセス権限がありません。"
+    showDenied(msg)
+  }
+
+  function start() {
+    cleanUrlToken()
+    var c = readCreds()
+    if (c.loginId && c.masterToken && c.caseId) {
+      callValidate(c)
+        .then(function (data) {
+          if (!applyValidation(data)) {
+            clearCreds()
+            bootstrapFromOpener().then(function (c2) {
+              if (!c2) {
+                denyFromValidation(data)
+                return
+              }
+              callValidate(c2).then(function (d2) {
+                if (!applyValidation(d2)) denyFromValidation(d2)
+              })
+            })
+          }
+        })
+        .catch(function () {
+          showDenied("検証サーバーに接続できませんでした。")
+        })
       return
     }
-  } catch (e) {}
-
-  if (window.opener && !window.opener.closed) {
-    var finished = false
-    var tries = 0
-    var poll = setInterval(function () {
-      if (finished) return
-      tries++
-      if (tries > 60) {
-        clearInterval(poll)
-        showDenied("ポータルからの認証がタイムアウトしました。任務ポータルのリンクから開き直してください。")
+    bootstrapFromOpener().then(function (c2) {
+      if (!c2) {
+        showDenied(
+          "このページを単独で開くには、先に任務ポータルにログインし、対象作品をプレイ開始してください。"
+        )
         return
       }
-      try {
-        window.opener.postMessage(
-          { type: MSG_REQUEST, resourceKey: window.__TOKEN_RESOURCE_KEY__ || "" },
-          TOKEN_GATE_ORIGIN
-        )
-      } catch (e) {}
-    }, 300)
-
-    function onGrant(ev) {
-      if (ev.origin !== TOKEN_GATE_ORIGIN) return
-      if (!ev.data || ev.data.type !== MSG_GRANT) return
-      var t = ev.data.token
-      if (!t) return
-      finished = true
-      clearInterval(poll)
-      window.removeEventListener("message", onGrant)
-      validate(t, true)
-    }
-    window.addEventListener("message", onGrant)
-    return
+      callValidate(c2)
+        .then(function (data) {
+          if (!applyValidation(data)) denyFromValidation(data)
+        })
+        .catch(function () {
+          showDenied("検証サーバーに接続できませんでした。")
+        })
+    })
   }
 
-  showDenied("アクセス用のトークンがありません。任務ポータルから調査リンクを開いてください。")
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start)
+  } else {
+    start()
+  }
 })()
