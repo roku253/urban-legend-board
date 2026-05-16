@@ -209,18 +209,13 @@
         '<div class="ns-denied-card">' +
         '<h1>■ お知らせ ■</h1>' +
         '<p>このページは現在、招待制の閲覧モードに切り替わっています。</p>' +
-        '<p>板を開くには、配布された経路（任務ポータル）からのアクセスが必要です。</p>' +
-        '<p class="small">' + String(msg || "").replace(/[<>]/g, "") + '</p>' +
+        '<p>閲覧できる環境から再度お試しください。</p>' +
         '</div>';
       document.documentElement.appendChild(el);
     };
   </script>
   <script src="./token-gate.js" defer></script>
-  <!--
-    Internal note:
-    一部のスレッドは深夜帯 (23:00-01:00) のみ表示される。
-    まだここにいます
-  -->
+  
 </head>
 <body>
   <div id="site-root">
@@ -237,47 +232,47 @@
       <div class="panel-h">スレッド一覧（タップ／クリックでジャンプ）</div>
       <div class="panel-b">
         <ul class="thread-list">
-          <!-- 謎: 看板 (A) -->
+          
           <li><a href="#thread-plate">■ この画像なんて書いてあるかわかる人いる？</a><span class="cnt">（38）</span></li>
-          <!-- カモ: 猫 -->
+          
           <li><a href="#thread-cat">■ うちの猫の動画上げたら全然伸びないんだが Part.12</a><span class="cnt">（89）</span></li>
-          <!-- カモ: スイーツ -->
+          
           <li><a href="#thread-sweets">■ コンビニ新作スイーツ感想スレ Part.41</a><span class="cnt">（612）</span></li>
-          <!-- 謎: ニュースぼかし (B) -->
+          
           <li><a href="#thread-news">■ ニュースで見たって人いる？ あの件</a><span class="cnt">（284）</span></li>
-          <!-- カモ: ゲーム実況 -->
+          
           <li><a href="#thread-game">■ 新作RPG攻略スレ Part.07</a><span class="cnt">（1031）</span></li>
-          <!-- 謎: 名前→座標 (C) -->
+          
           <li><a href="#thread-coord">■ 名前を座標に変換するサイト作ってみた</a><span class="cnt">（18）</span></li>
-          <!-- カモ: AI -->
+          
           <li><a href="#thread-ai">■ AI に怪談考えさせたら微妙だった Part.04</a><span class="cnt">（76）</span></li>
-          <!-- 謎: 心霊動画 (D) -->
+          
           <li><a href="#thread-horror-vid">■ 心霊スポット巡ってみた動画あった</a><span class="cnt">（22）</span></li>
-          <!-- カモ: 地元の祭り -->
+          
           <li><a href="#thread-matsuri">■ 地元の夏祭りスレ【提灯写真上げてけ】</a><span class="cnt">（411）</span></li>
-          <!-- カモ: コンビニ -->
+          
           <li><a href="#thread-konbini">■ 近所のコンビニのレジ画面に謎の英単語が出る件</a><span class="cnt">（56）</span></li>
-          <!-- 謎: ハル (E) -->
+          
           <li><a href="#thread-haru">■ ハルって子を知ってる人いる？</a><span class="cnt">（2）</span></li>
-          <!-- カモ: ニート -->
+          
           <li><a href="#thread-neet">■ ニートの部屋　無職歴がついに西暦を超えそう Part.103</a><span class="cnt">（1203）</span></li>
-          <!-- カモ: 在宅 -->
+          
           <li><a href="#thread-remote">■ 在宅ワーク、もう外の音が怖い</a><span class="cnt">（97）</span></li>
-          <!-- カモ: 推し -->
+          
           <li><a href="#thread-oshi">■ 今期アニメ感想スレ【ネタバレあり】</a><span class="cnt">（543）</span></li>
-          <!-- カモ: 自販機 -->
+          
           <li><a href="#thread-vending">■ うちの最寄り駅、自販機に幽霊出るらしい</a><span class="cnt">（44）</span></li>
-          <!-- 謎: 詩 (F) -->
+          
           <li><a href="#thread-poem">■ 詩みたいなの書いてみた（暇）</a><span class="cnt">（9）</span></li>
-          <!-- カモ: 廃線 -->
+          
           <li><a href="#thread-tetsu">■ 廃線跡歩いてきた【写真】</a><span class="cnt">（120）</span></li>
-          <!-- カモ: ラーメン -->
+          
           <li><a href="#thread-ramen">■ 深夜に食べたくなるラーメン挙げてけ</a><span class="cnt">（388）</span></li>
-          <!-- カモ: 古本 -->
+          
           <li><a href="#thread-furuhon">■ 古本屋で変な紙挟まってた経験ある？</a><span class="cnt">（66）</span></li>
-          <!-- カモ: 路線 -->
+          
           <li><a href="#thread-rosen">■ 終電後にしか走らない路線バスってある？</a><span class="cnt">（51）</span></li>
-          <!-- 深夜限定 -->
+          
           <li id="timed-thread-link" class="timed-thread">
             <a href="#thread-midnight">■ ……</a><span class="cnt">（0）</span>
           </li>
@@ -288,7 +283,7 @@
       </div>
     </div>
 
-    <!-- ===================== 謎スレ A：看板 ===================== -->
+    
     <article class="thread-box" id="thread-plate">
       <div class="thread-head"><a href="#thread-plate">■ この画像なんて書いてあるかわかる人いる？</a></div>
       <div class="res">
@@ -314,7 +309,7 @@
         <div class="res-body">読めなかった。誰か特定してくれ。</div></div>
     </article>
 
-    <!-- ===================== カモ：猫 (→ Yootube 導線) ===================== -->
+    
     <article class="thread-box" id="thread-cat">
       <div class="thread-head"><a href="#thread-cat">■ うちの猫の動画上げたら全然伸びないんだが Part.12</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/05(木) 12:01:33 ID:Cn2xPm8K</span>
@@ -329,7 +324,7 @@
         <div class="res-body">うちの猫は夜3:17になると必ず起きる。なんだあれ。</div></div>
     </article>
 
-    <!-- ===================== カモ：スイーツ (→ GougleMap 導線) ===================== -->
+    
     <article class="thread-box" id="thread-sweets">
       <div class="thread-head"><a href="#thread-sweets">■ コンビニ新作スイーツ感想スレ Part.41</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/08(日) 14:33:22 ID:Sw1tMm7B</span>
@@ -342,7 +337,7 @@
         <div class="res-body">あれ、スイーツ以外の謎ピンも混じってるよね？</div></div>
     </article>
 
-    <!-- ===================== 謎スレ B：ニュースぼかし＋エンコード ===================== -->
+    
     <article class="thread-box" id="thread-news">
       <div class="thread-head"><a href="#thread-news">■ ニュースで見たって人いる？ あの件</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/10/04(金) 22:30:01 ID:Nv2xWp1J</span>
@@ -362,7 +357,7 @@
         <div class="res-body">関係ないけど、あの辺の観光協会のサイト、なんか説明文途切れてる気がした。</div></div>
     </article>
 
-    <!-- ===================== カモ：ゲーム ===================== -->
+    
     <article class="thread-box" id="thread-game">
       <div class="thread-head"><a href="#thread-game">■ 新作RPG攻略スレ Part.07</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/10(火) 21:00:00 ID:Gm1tRp4W</span>
@@ -373,21 +368,21 @@
         <div class="res-body">攻略wikiに載ってる経験値、最新パッチで全部古い。注意。</div></div>
     </article>
 
-    <!-- ===================== 謎スレ C：名前→座標 ===================== -->
+    
     <article class="thread-box" id="thread-coord">
       <div class="thread-head"><a href="#thread-coord">■ 名前を座標に変換するサイト作ってみた</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/18(水) 19:00:33 ID:Ind1eJv0K</span>
-        <div class="res-body">個人開発。氏名フルネームを入力すると座標が出るやつ。自分の名前で遊んでください。<br />
+        <div class="res-body">試しに作った。氏名フルネームを入れると座標っぽい数字が出るやつ。たぶん遊び程度。<br />
           <a href="https://roku253.github.io/name-to-coord/" rel="noopener">https://roku253.github.io/name-to-coord/</a></div></div>
       <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/18(水) 19:22:11 ID:Lk2nMp7H</span>
         <div class="res-body">自分の名前入れたら太平洋の真ん中だった。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/18(水) 20:08:50 ID:Tb5wQs0F</span>
         <div class="res-body">ランダム生成？　仕組み気になる。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/18(水) 22:01:40 ID:Vn7zRj2D</span>
-        <div class="res-body">ハッシュかな。同じ名前なら常に同じ座標になるっぽい。</div></div>
+        <div class="res-body">俺の環境だと同じ名前だといつも同じ結果になるっぽい。気のせいかも。</div></div>
     </article>
 
-    <!-- ===================== カモ：AI ===================== -->
+    
     <article class="thread-box" id="thread-ai">
       <div class="thread-head"><a href="#thread-ai">■ AI に怪談考えさせたら微妙だった Part.04</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/22(日) 13:00:15 ID:Ai9tXp3R</span>
@@ -398,7 +393,7 @@
         <div class="res-body">怪談に必要なのは余韻であって、AIに余韻はない。</div></div>
     </article>
 
-    <!-- ===================== 謎スレ D：心霊動画 ===================== -->
+    
     <article class="thread-box" id="thread-horror-vid">
       <div class="thread-head"><a href="#thread-horror-vid">■ 心霊スポット巡ってみた動画あった</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/19(木) 23:01:22 ID:Yt0vXp5L</span>
@@ -407,10 +402,10 @@
       <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/19(木) 23:18:09 ID:Mn4wRp7K</span>
         <div class="res-body">普通に観光地紹介じゃん。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/19(木) 23:55:01 ID:Vp2sBm9X</span>
-        <div class="res-body">6:15あたりちょっと違和感ない？</div></div>
+        <div class="res-body">後半のほう、ちょっと違和感なかった？</div></div>
     </article>
 
-    <!-- ===================== カモ：祭り ===================== -->
+    
     <article class="thread-box" id="thread-matsuri">
       <div class="thread-head"><a href="#thread-matsuri">■ 地元の夏祭りスレ【提灯写真上げてけ】</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/16(金) 22:11:30 ID:Mt2xWp9R</span>
@@ -419,7 +414,7 @@
         <div class="res-body">露店の数で町の元気が分かる説。</div></div>
     </article>
 
-    <!-- ===================== カモ：コンビニ ===================== -->
+    
     <article class="thread-box" id="thread-konbini">
       <div class="thread-head"><a href="#thread-konbini">■ 近所のコンビニのレジ画面に謎の英単語が出る件</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/04(水) 18:20:44 ID:Ko8bIn3I</span>
@@ -428,7 +423,7 @@
         <div class="res-body">メンテ用のデバッグ画面が誤表示されてんじゃね</div></div>
     </article>
 
-    <!-- ===================== 謎スレ E：ハル ===================== -->
+    
     <article class="thread-box" id="thread-haru">
       <div class="thread-head"><a href="#thread-haru">■ ハルって子を知ってる人いる？</a></div>
       <div class="res">
@@ -445,7 +440,7 @@
       </div>
     </article>
 
-    <!-- ===================== カモ：ニート ===================== -->
+    
     <article class="thread-box" id="thread-neet">
       <div class="thread-head"><a href="#thread-neet">■ ニートの部屋　無職歴がついに西暦を超えそう Part.103</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/04/28(金) 14:02:01 ID:Ne7tAa0B</span>
@@ -454,7 +449,7 @@
         <div class="res-body">税務署が見たら泣くやつ。</div></div>
     </article>
 
-    <!-- ===================== カモ：在宅 ===================== -->
+    
     <article class="thread-box" id="thread-remote">
       <div class="thread-head"><a href="#thread-remote">■ 在宅ワーク、もう外の音が怖い</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/01(日) 11:00:00 ID:Wf2tLm9R</span>
@@ -463,21 +458,21 @@
         <div class="res-body">わかる。コンビニ行くのも一仕事。</div></div>
     </article>
 
-    <!-- ===================== カモ：推し ===================== -->
+    
     <article class="thread-box" id="thread-oshi">
       <div class="thread-head"><a href="#thread-oshi">■ 今期アニメ感想スレ【ネタバレあり】</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/14(土) 22:01:32 ID:An2dLm0F</span>
         <div class="res-body">3話の引きやばい。来週まで生きてる気がしない。</div></div>
     </article>
 
-    <!-- ===================== カモ：自販機 ===================== -->
+    
     <article class="thread-box" id="thread-vending">
       <div class="thread-head"><a href="#thread-vending">■ うちの最寄り駅、自販機に幽霊出るらしい</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/30(金) 23:15:21 ID:Vd1nMp7R</span>
         <div class="res-body">夜10時以降に小銭入れると、釣り銭の音が二回鳴る。</div></div>
     </article>
 
-    <!-- ===================== 謎スレ F：詩（最重要・目立たない） ===================== -->
+    
     <article class="thread-box" id="thread-poem">
       <div class="thread-head"><a href="#thread-poem">■ 詩みたいなの書いてみた（暇）</a></div>
       <div class="res">
@@ -499,35 +494,35 @@
         <div class="res-body">乙〜</div></div>
     </article>
 
-    <!-- ===================== カモ：廃線 ===================== -->
+    
     <article class="thread-box" id="thread-tetsu">
       <div class="thread-head"><a href="#thread-tetsu">■ 廃線跡歩いてきた【写真】</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/22(木) 14:00:11 ID:Rb3tMm6X</span>
         <div class="res-body">レール無くなった後の路盤、夏の終わりに行くと完璧。</div></div>
     </article>
 
-    <!-- ===================== カモ：ラーメン ===================== -->
+    
     <article class="thread-box" id="thread-ramen">
       <div class="thread-head"><a href="#thread-ramen">■ 深夜に食べたくなるラーメン挙げてけ</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/15(日) 02:55:11 ID:Rm1nLm7Q</span>
         <div class="res-body">家系一択。健康は明日考える。</div></div>
     </article>
 
-    <!-- ===================== カモ：古本 ===================== -->
+    
     <article class="thread-box" id="thread-furuhon">
       <div class="thread-head"><a href="#thread-furuhon">■ 古本屋で変な紙挟まってた経験ある？</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/28(水) 19:01:32 ID:Fh2nBn5K</span>
         <div class="res-body">写真とメモが3枚出てきた。怖くて買えなかった。</div></div>
     </article>
 
-    <!-- ===================== カモ：路線 ===================== -->
+    
     <article class="thread-box" id="thread-rosen">
       <div class="thread-head"><a href="#thread-rosen">■ 終電後にしか走らない路線バスってある？</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/03(火) 23:55:01 ID:Rs5dLm8X</span>
         <div class="res-body">うちの方は最終便のあと一台だけ謎の系統が出る。乗ったことはない。</div></div>
     </article>
 
-    <!-- ===================== 深夜限定（23:00-01:00） ===================== -->
+    
     <article class="thread-box" id="thread-midnight" style="display:none;">
       <div class="thread-head"><a href="#thread-midnight">■ ……</a></div>
       <div class="res">
@@ -538,7 +533,7 @@
       </div>
     </article>
 
-    <!-- ===================== 新規スレッド（ダミー） ===================== -->
+    
     <div class="form-block">
       <strong>新規スレッドを立てる</strong>
       <form class="fake-post" data-label="新規スレ">
