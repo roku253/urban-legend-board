@@ -286,7 +286,7 @@
     </div>
 
     <!-- ===================== 謎スレ A：看板 ===================== -->
-    <article class="thread-box" id="thread-plate">
+    <article class="thread-box" data-kn-story-clue="1" id="thread-plate">
       <div class="thread-head"><a href="#thread-plate">■ この画像なんて書いてあるかわかる人いる？</a></div>
       <div class="res">
         <span class="res-num">1</span>
@@ -340,7 +340,7 @@
     </article>
 
     <!-- ===================== 謎スレ B：ニュースぼかし＋エンコード ===================== -->
-    <article class="thread-box" id="thread-news">
+    <article class="thread-box" data-kn-story-clue="1" id="thread-news">
       <div class="thread-head"><a href="#thread-news">■ ニュースで見たって人いる？ あの件</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/10/04(金) 22:30:01 ID:Nv2xWp1J</span>
         <div class="res-body">夕方のローカルでちらっと見た。あれ続報出てなくない？</div></div>
@@ -371,7 +371,7 @@
     </article>
 
     <!-- ===================== 謎スレ C：名前→座標 ===================== -->
-    <article class="thread-box" id="thread-coord">
+    <article class="thread-box" data-kn-story-clue="1" id="thread-coord">
       <div class="thread-head"><a href="#thread-coord">■ 名前を座標に変換するサイト作ってみた</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/18(水) 19:00:33 ID:Ind1eJv0K</span>
         <div class="res-body">試しに作った。氏名フルネームを入れると座標っぽい数字が出るやつ。たぶん遊び程度。<br />
@@ -396,7 +396,7 @@
     </article>
 
     <!-- ===================== 謎スレ D：心霊動画 ===================== -->
-    <article class="thread-box" id="thread-horror-vid">
+    <article class="thread-box" data-kn-story-clue="1" id="thread-horror-vid">
       <div class="thread-head"><a href="#thread-horror-vid">■ 心霊スポット巡ってみた動画あった</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/19(木) 23:01:22 ID:Yt0vXp5L</span>
         <div class="res-body">某スポット巡り動画。看板はっきり映ってる：<br />
@@ -426,7 +426,7 @@
     </article>
 
     <!-- ===================== 謎スレ E：ハル ===================== -->
-    <article class="thread-box" id="thread-haru">
+    <article class="thread-box" data-kn-story-clue="1" id="thread-haru">
       <div class="thread-head"><a href="#thread-haru">■ ハルって子を知ってる人いる？</a></div>
       <div class="res">
         <span class="res-num">1</span>
@@ -475,7 +475,7 @@
     </article>
 
     <!-- ===================== 謎スレ F：詩（最重要・目立たない） ===================== -->
-    <article class="thread-box" id="thread-poem">
+    <article class="thread-box" data-kn-story-clue="1" id="thread-poem">
       <div class="thread-head"><a href="#thread-poem">■ 詩みたいなの書いてみた（暇）</a></div>
       <div class="res">
         <span class="res-num">1</span>
@@ -525,7 +525,7 @@
     </article>
 
     <!-- ===================== 深夜限定（23:00-01:00） ===================== -->
-    <article class="thread-box" id="thread-midnight" style="display:none;">
+    <article class="thread-box" data-kn-story-clue="1" id="thread-midnight" style="display:none;">
       <div class="thread-head"><a href="#thread-midnight">■ ……</a></div>
       <div class="res">
         <span class="res-num">1</span>
@@ -559,7 +559,83 @@
 
   <script>
     (function () {
+      var KN_FP_KEY = "signal_trace_kn_footprint_v2";
+      function knFootprint() {
+        try {
+          return localStorage.getItem(KN_FP_KEY) || "";
+        } catch (e) {
+          return "";
+        }
+      }
+      function knPurged() {
+        var f = knFootprint();
+        return f === "purged_delete" || f === "purged_keep";
+      }
+      function knApplyFootprint() {
+        if (!knPurged()) return;
+        document.querySelectorAll('[data-kn-story-clue="1"]').forEach(function (el) {
+          el.style.display = "none";
+        });
+        var li = document.getElementById("timed-thread-link");
+        if (li) li.style.display = "none";
+        var note = document.getElementById("timed-thread-note");
+        if (note) note.style.display = "none";
+      }
+      function knPurgeModal() {
+        var q = new URLSearchParams(location.search);
+        if (q.get("kn_purge") !== "1") return;
+        var step = parseInt(q.get("kn_step") || "0", 10);
+        var ov = document.createElement("div");
+        ov.setAttribute("role", "dialog");
+        ov.style.cssText =
+          "position:fixed;inset:0;z-index:999998;background:rgba(0,0,0,.78);display:flex;align-items:center;justify-content:center;padding:16px;font-family:inherit;";
+        var card = document.createElement("div");
+        card.style.cssText =
+          "max-width:420px;width:100%;background:#faf8f2;border:2px solid #8b4513;padding:18px;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.4);color:#222;";
+        card.innerHTML =
+          "<p style=\"margin:0 0 12px;font-weight:bold;font-size:14px;\">該当情報を削除対象としてマークしますか？</p>" +
+          "<p style=\"margin:0 0 16px;font-size:12px;color:#444;line-height:1.55;\">この操作は任務ポータルから開始された検証プロセスの一部です。ページごとに同じ方針で選んでください。</p>";
+        var row = document.createElement("div");
+        row.style.cssText = "display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;";
+        var btnY = document.createElement("button");
+        btnY.textContent = "はい";
+        btnY.type = "button";
+        btnY.style.cssText = "padding:8px 16px;font-size:13px;cursor:pointer;background:#c00;color:#fff;border:none;border-radius:4px;";
+        var btnN = document.createElement("button");
+        btnN.textContent = "いいえ";
+        btnN.type = "button";
+        btnN.style.cssText = "padding:8px 16px;font-size:13px;cursor:pointer;background:#ddd;color:#222;border:1px solid #888;border-radius:4px;";
+        function reply(choice) {
+          try {
+            if (window.opener && !window.opener.closed) {
+              window.opener.postMessage({ type: "KN_PURGE_SITE_RESPONSE", step: step, choice: choice }, "*");
+            }
+          } catch (e) {}
+          window.close();
+        }
+        btnY.onclick = function () {
+          reply(true);
+        };
+        btnN.onclick = function () {
+          reply(false);
+        };
+        row.appendChild(btnN);
+        row.appendChild(btnY);
+        card.appendChild(row);
+        ov.appendChild(card);
+        document.body.appendChild(ov);
+      }
+
       function syncMidnightThread() {
+        if (knPurged()) {
+          var li = document.getElementById("timed-thread-link");
+          var article = document.getElementById("thread-midnight");
+          var note = document.getElementById("timed-thread-note");
+          if (li) li.classList.remove("show");
+          if (article) article.style.display = "none";
+          if (note) note.style.display = "none";
+          return;
+        }
         var now = new Date();
         var h = now.getHours();
         // 23:00-23:59 or 00:00-00:59
@@ -588,6 +664,9 @@
 
       syncMidnightThread();
       setInterval(syncMidnightThread, 30000);
+
+      knApplyFootprint();
+      knPurgeModal();
     })();
   </script>
   </div>
