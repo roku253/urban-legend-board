@@ -581,6 +581,14 @@
         var note = document.getElementById("timed-thread-note");
         if (note) note.style.display = "none";
       }
+      function knOnFootprintStorage(e) {
+        if (e.key !== KN_FP_KEY) return;
+        var v = e.newValue;
+        if (v !== "purged_delete" && v !== "purged_keep") return;
+        knApplyFootprint();
+        syncMidnightThread();
+      }
+      window.addEventListener("storage", knOnFootprintStorage);
       var KN_PURGE_CHAIN = [
         "https://roku253.github.io/urban-legend-board/?kn_purge=1&kn_step=0",
         "https://roku253.github.io/kasuminomori/?kn_purge=1&kn_step=1",
