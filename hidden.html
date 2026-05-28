@@ -2,70 +2,10 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>野良＠裏板 — 隠しデバッグ</title>
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; padding: 1rem; font-family: "MS PGothic", "Yu Gothic", Meiryo, sans-serif; font-size: 12px; line-height: 1.5; background: #1a1a1a; color: #c8ffc8; }
-    a { color: #8cf; }
-    .wrap { max-width: 720px; margin: 0 auto; }
-    h1 { font-size: 14px; color: #f66; }
-    pre { background: #0d0d0d; border: 1px solid #393; padding: 10px; overflow-x: auto; font-size: 11px; }
-    .deny { color: #f88; }
-    #site-root { visibility: hidden; }
-    html.token-gate-ok #site-root { visibility: visible; }
-  </style>
-  <script>window.__TOKEN_RESOURCE_KEY__ = "ext:urban-legend-board"</script>
-  <script>
-    window.__TOKEN_DENIED__ = function () { document.body.innerHTML = "<p>閲覧権限がありません。</p>"; };
-  </script>
-  <script src="./token-gate.js" defer></script>
+  <meta http-equiv="refresh" content="0; url=./" />
+  <title>リダイレクト</title>
 </head>
 <body>
-  <div id="site-root" class="wrap">
-    <p><a href="index.html">← 板トップ</a></p>
-    <h1>DEBUG / SALVAGE THREAD</h1>
-    <div id="gate" class="deny">認証パラメータを確認中…</div>
-    <div id="salvage" style="display:none">
-      <pre id="log"></pre>
-      <p>接続ログ・タイムスタンプを回収しました。ポータルへ salvage_ok を報告してください。</p>
-    </div>
-  </div>
-  <script>
-    (function () {
-      var EXPECT_COORD = "36.04872,138.11184";
-      var EXPECT_AUTH = "ADMIN_ID_105";
-      var SALVAGE_TYPE = "KN_BOARD_SALVAGE_DONE";
-      function normCoord(s) {
-        return String(s || "").replace(/\s/g, "").replace(/，/g, ",").toLowerCase();
-      }
-      function authOk(s) { return String(s || "").trim().toUpperCase() === EXPECT_AUTH; }
-      function coordOk(s) {
-        var n = normCoord(s);
-        return n === EXPECT_COORD || (n.indexOf("36.0487") === 0 && n.indexOf("138.1118") > 0);
-      }
-      function showSalvage() {
-        document.getElementById("gate").style.display = "none";
-        document.getElementById("salvage").style.display = "block";
-        document.getElementById("log").textContent =
-          "coord=" + EXPECT_COORD + "\nauth=" + EXPECT_AUTH + "\nip=192.168.0.***\nts=" + new Date().toISOString() + "\nstatus=SALVAGE_OK";
-        try {
-          if (window.opener && !window.opener.closed) {
-            window.opener.postMessage({ type: SALVAGE_TYPE }, "https://nazo-portal.vercel.app");
-            window.opener.postMessage({ type: SALVAGE_TYPE }, window.location.origin);
-          }
-        } catch (e) {}
-      }
-      function check() {
-        if (!document.documentElement.classList.contains("token-gate-ok")) return;
-        var q = new URLSearchParams(location.search);
-        if (coordOk(q.get("coord")) && authOk(q.get("auth"))) showSalvage();
-        else document.getElementById("gate").textContent = "coord / auth が一致しません。";
-      }
-      var poll = setInterval(function () {
-        if (document.documentElement.classList.contains("token-gate-ok")) { clearInterval(poll); check(); }
-      }, 80);
-    })();
-  </script>
+  <p>このページは廃止されました。<a href="./">板トップへ</a></p>
 </body>
 </html>
