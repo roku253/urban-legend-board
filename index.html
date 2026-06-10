@@ -64,9 +64,6 @@
     }
     .thread-list li:last-child { border-bottom: none; }
     .thread-list .cnt { color: #666; font-size: 11px; margin-left: 4px; }
-    .thread-list .timed-thread { display: none; }
-    .thread-list .timed-thread.show { display: block; }
-
     .thread-box {
       background: #faf8f2;
       border: 1px solid #b8a88c;
@@ -231,7 +228,7 @@
     </div>
 
 
-    <div class="panel" id="pin-fixed" data-kn-story-clue="1">
+    <div class="panel" id="pin-fixed">
       <div class="panel-h">【固定】板主より</div>
       <div class="panel-b" style="font-size:12px;line-height:1.6;">
         <p style="margin:0 0 8px;"><strong>怪奇・未解決案件の情報提供について</strong></p>
@@ -252,8 +249,6 @@
           <li><a href="#thread-news">■ 【2019】霞ノ杜・神隠し伝言</a><span class="cnt">（47）</span></li>
           <!-- カモ: ゲーム実況 -->
           <li><a href="#thread-game">■ 新作RPG攻略スレ Part.07</a><span class="cnt">（1031）</span></li>
-          <!-- 謎: 転校噂 -->
-          <li><a href="#thread-transfer">■ 霞ノ杜の「転校した子」って誰？</a><span class="cnt">（31）</span></li>
           <!-- カモ: AI -->
           <li><a href="#thread-ai">■ AI に怪談考えさせたら微妙だった Part.04</a><span class="cnt">（76）</span></li>
           <!-- 謎: 心霊動画 (D) -->
@@ -276,14 +271,7 @@
           <li><a href="#thread-furuhon">■ 古本屋で変な紙挟まってた経験ある？</a><span class="cnt">（66）</span></li>
           <!-- カモ: 路線 -->
           <li><a href="#thread-rosen">■ 終電後にしか走らない路線バスってある？</a><span class="cnt">（51）</span></li>
-          <!-- 深夜限定 -->
-          <li id="timed-thread-link" class="timed-thread">
-            <a href="#thread-midnight">■ ……</a><span class="cnt">（0）</span>
-          </li>
         </ul>
-        <p id="timed-thread-note" class="timed-hint" style="display:none;">
-          ※ 23:00〜01:00 の間、一覧に限定スレッドが現れることがあります。
-        </p>
       </div>
     </div>
 
@@ -320,16 +308,18 @@
     <!-- ===================== 謎スレ B：2019霞ノ杜 ===================== -->
     <article class="thread-box" data-kn-story-clue="1" id="thread-news">
       <div class="thread-head"><a href="#thread-news">■ 【2019】霞ノ杜・神隠し伝言</a></div>
-      <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">PLACEHOLDER</span>
-        <div class="res-body">霞ノ杜のローカルで「小学生が烏啼山道で負傷、登山事故扱い」と出てた。町の古い伝承「三人が山に入り、二人だけが戻る」に無理やり当てはめてる人多くない？</div></div>
+      <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2019/08/12(月) 23:41:05 ID:Kn2019a</span>
+        <div class="res-body">霞ノ杜って知ってる？最近子供が消えたって話が地元で出回ってる。神隠しって言ってる人もいるけど詳しくわからん。</div></div>
       <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2019/08/13(火) 08:22:40 ID:Kn2019b</span>
-        <div class="res-body">公式は氏名非公開。板では「ソラくん」「青空」「転校した子」が混ざってて読めない。同じ子なのか別なのか。</div></div>
+        <div class="res-body">そこ、昔から山に関する言い伝えがある地域らしい。三人入って二人しか戻らないとか。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2019/08/13(火) 19:44:02 ID:Kn2019d</span>
-        <div class="res-body">伝承は江戸時代からの話らしい。2019の件と一緒に語るのは後付けだろ、でも怖いのは怖い。</div></div>
+        <div class="res-body">消えた子のあだ名らしいけど、町の公式とか見ても何も出てこない。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2019/08/14(水) 14:11:09 ID:Kn2019c</span>
-        <div class="res-body">地図で霞ノ杜検索すると町立第一小学校が出る。表記ゆれで「霞ノ杜第一小学校」とも。</div></div>
+        <div class="res-body">町のサイトに当時何か載ってた気がするんだけど、今見たら見当たらない。<br />
+          <a href="https://roku253.github.io/kasuminomori/" rel="noopener">https://roku253.github.io/kasuminomori/</a><br />
+          資料室とか歴史のページ、昔の記事消えてるっぽい。</div></div>
       <div class="res"><span class="res-num">5</span><span class="res-name">名無しさん</span><span class="res-date">2019/08/15(木) 02:33:18 ID:Kn2019e</span>
-        <div class="res-body">深夜に長文書こうとしたら規制で消された人いた。保護者っぽい文体だった。スタブは下の深夜スレにも残ってる。</div></div>
+        <div class="res-body">深夜に詳しく書こうとしたら長くなりすぎて送れなかった。続きは後で。</div></div>
     </article>
     <!-- ===================== カモ：ゲーム ===================== -->
     <article class="thread-box" id="thread-game">
@@ -340,19 +330,6 @@
         <div class="res-body">それはガセ。検証スレ見てこい。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/10(火) 23:48:55 ID:Op4sLm8K</span>
         <div class="res-body">攻略wikiに載ってる経験値、最新パッチで全部古い。注意。</div></div>
-    </article>
-
-    <!-- ===================== 謎スレ：転校噂 ===================== -->
-    <article class="thread-box" data-kn-story-clue="1" id="thread-transfer">
-      <div class="thread-head"><a href="#thread-transfer">■ 霞ノ杜の「転校した子」って誰？</a></div>
-      <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2019/09/02(月) 18:11:00 ID:Tr2019a</span>
-        <div class="res-body">第一小学校の口では「転校した子」がいるらしい。でも行き先の学校名、どこにも書いてない。</div></div>
-      <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2019/09/03(火) 07:22:14 ID:Tr2019b</span>
-        <div class="res-body">ソラくんって呼び方と青空って呼び方、転校した子って呼び方——同じ子？　見た人と見てない人がいる。</div></div>
-      <div class="res"><span class="res-num">3</span><span class="res-name">板管理者</span><span class="res-date">2019/09/04(水) 11:05:33 ID:ADMIN_ID_105</span>
-        <div class="res-body">個人特定につながる書き込みは削除します。スレッドは情報整理用として残します。</div></div>
-      <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/20(金) 21:40:11 ID:Tr2024a</span>
-        <div class="res-body">2019のスレと公式記録、食い違ってる気がする。板と学校、どっち信じるか問題。</div></div>
     </article>
 
     <!-- ===================== カモ：AI ===================== -->
@@ -366,15 +343,13 @@
         <div class="res-body">怪談に必要なのは余韻であって、AIに余韻はない。</div></div>
     </article>
 
-    <!-- ===================== 謎スレ D：心霊動画 ===================== -->
-    <article class="thread-box" data-kn-story-clue="1" id="thread-horror-vid">
+    <!-- ===================== カモ：心霊動画 ===================== -->
+    <article class="thread-box" id="thread-horror-vid">
       <div class="thread-head"><a href="#thread-horror-vid">■ 心霊スポット巡ってみた動画あった</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/19(木) 23:01:22 ID:Yt0vXp5L</span>
-        <div class="res-body">2019年の霞ノ杜ニュース風、まだ残ってる：<br />
-          <a href="https://roku253.github.io/yootube/watch/kasuminomori-2019-incident.html" rel="noopener">https://roku253.github.io/yootube/watch/kasuminomori-2019-incident.html</a><br />
-          コメント欄、なんか重い。</div></div>
+        <div class="res-body">心霊スポ巡り系の動画、コメ欄が妙に重いの多くない？</div></div>
       <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/19(木) 23:18:09 ID:Mn4wRp7K</span>
-        <div class="res-body">普通に観光地紹介じゃん。</div></div>
+        <div class="res-body">自己満足ホラー多い。サムネ釣り。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/19(木) 23:55:01 ID:Vp2sBm9X</span>
         <div class="res-body">後半のほう、ちょっと違和感なかった？</div></div>
     </article>
@@ -461,20 +436,6 @@
         <div class="res-body">うちの方は最終便のあと一台だけ謎の系統が出る。乗ったことはない。</div></div>
     </article>
 
-    <!-- ===================== 深夜限定（23:00-01:00） ===================== -->
-    <article class="thread-box" data-kn-story-clue="1" id="thread-midnight" style="display:none;">
-      <div class="thread-head"><a href="#thread-midnight">■ 【削除済み】保護者投稿のキャッシュ</a></div>
-      <div class="res">
-        <span class="res-num">1</span>
-        <span class="res-name ghost">（削除済み）</span>
-        <span class="res-date">2019/08/15(木) 02:41:00 ID:———</span>
-        <div class="res-body" style="color:#888;">
-          ▼ 以下、運営により削除された投稿のスタブです ▼<br /><br />
-          ……息子の友達が「まだここにいる」と言い続けている。学校は転校したと教えてくれたが、私たち親は聞いていない。子どもたちを混乱させないために、あの子の名前を出さないでほしいと……
-        </div>
-      </div>
-    </article>
-
     <!-- ===================== 新規スレッド（ダミー） ===================== -->
     <div class="form-block">
       <strong>新規スレッドを立てる</strong>
@@ -516,46 +477,14 @@
         document.querySelectorAll('[data-kn-story-clue="1"]').forEach(function (el) {
           el.style.display = "none";
         });
-        var li = document.getElementById("timed-thread-link");
-        if (li) li.style.display = "none";
-        var note = document.getElementById("timed-thread-note");
-        if (note) note.style.display = "none";
       }
       function knOnFootprintStorage(e) {
         if (e.key !== KN_FP_KEY) return;
         var v = e.newValue;
         if (v !== "purged_delete" && v !== "purged_keep" && v !== "purged_partial") return;
         knApplyFootprint();
-        syncMidnightThread();
       }
       window.addEventListener("storage", knOnFootprintStorage);
-
-      function syncMidnightThread() {
-        if (knPurged()) {
-          var li = document.getElementById("timed-thread-link");
-          var article = document.getElementById("thread-midnight");
-          var note = document.getElementById("timed-thread-note");
-          if (li) li.classList.remove("show");
-          if (article) article.style.display = "none";
-          if (note) note.style.display = "none";
-          return;
-        }
-        var now = new Date();
-        var h = now.getHours();
-        // 23:00-23:59 or 00:00-00:59
-        var hit = (h >= 23) || (h < 1);
-        var li = document.getElementById("timed-thread-link");
-        var article = document.getElementById("thread-midnight");
-        var note = document.getElementById("timed-thread-note");
-        if (li) li.classList.toggle("show", hit);
-        if (article) article.style.display = hit ? "block" : "none";
-        if (note) {
-          note.style.display = "block";
-          note.textContent = hit
-            ? "※ 限定表示されるスレッドがあります。"
-            : "※ 23:00〜01:00 の間、一覧に限定スレッドが現れることがあります。夜に見直してみてください。";
-        }
-      }
 
       var msg =
         "このサイトはそろそろサービスを終了するため（管理者が飽きたため( ´∀｀)）\n" +
@@ -570,9 +499,6 @@
           box.classList.add("show");
         });
       });
-
-      syncMidnightThread();
-      setInterval(syncMidnightThread, 30000);
 
       knApplyFootprint();
     })();
