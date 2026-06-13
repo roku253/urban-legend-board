@@ -64,6 +64,37 @@
     }
     .thread-list li:last-child { border-bottom: none; }
     .thread-list .cnt { color: #666; font-size: 11px; margin-left: 4px; }
+    .thread-list li { display: none; }
+    .thread-list[data-active-page="1"] li[data-page="1"],
+    .thread-list[data-active-page="2"] li[data-page="2"],
+    .thread-list[data-active-page="3"] li[data-page="3"] { display: block; }
+    .thread-list li.thread-ghost { color: #555; }
+    .thread-list li.thread-ghost span:first-child { color: #333; }
+    .thread-pager {
+      margin: 6px 0 8px;
+      font-size: 11px;
+      text-align: center;
+      line-height: 2;
+    }
+    .thread-pager a,
+    .thread-pager span.pager-num {
+      display: inline-block;
+      min-width: 1.8em;
+      padding: 1px 7px;
+      margin: 0 1px;
+      border: 1px solid #b8a88c;
+      background: #faf8f2;
+      text-decoration: none;
+      color: #0000c0;
+    }
+    .thread-pager span.pager-num.current {
+      background: #d4c4a8;
+      font-weight: bold;
+      color: #210;
+      border-color: #a89878;
+    }
+    .thread-pager a:hover { background: #fff; color: #c00; }
+    .thread-pager .pager-label { color: #666; margin-right: 4px; }
     .thread-box {
       background: #faf8f2;
       border: 1px solid #b8a88c;
@@ -241,42 +272,83 @@
     <div class="panel" id="top">
       <div class="panel-h">スレッド一覧（タップ／クリックでジャンプ）</div>
       <div class="panel-b">
-        <ul class="thread-list">          <!-- カモ: 猫 -->
-          <li><a href="#thread-cat">■ うちの猫の動画上げたら全然伸びないんだが Part.12</a><span class="cnt">（89）</span></li>
-          <!-- カモ: スイーツ -->
-          <li><a href="#thread-sweets">■ コンビニ新作スイーツ感想スレ Part.41</a><span class="cnt">（612）</span></li>
-          <!-- 謎: ニュースぼかし (B) -->
-          <li><a href="#thread-news">■ 【2019】霞ノ杜・神隠し伝言</a><span class="cnt">（47）</span></li>
-          <!-- カモ: ゲーム実況 -->
-          <li><a href="#thread-game">■ 新作RPG攻略スレ Part.07</a><span class="cnt">（1031）</span></li>
-          <!-- カモ: AI -->
-          <li><a href="#thread-ai">■ AI に怪談考えさせたら微妙だった Part.04</a><span class="cnt">（76）</span></li>
-          <!-- 謎: 心霊動画 (D) -->
-          <li><a href="#thread-horror-vid">■ 心霊スポット巡ってみた動画あった</a><span class="cnt">（22）</span></li>
-          <!-- カモ: 地元の祭り -->
-          <li><a href="#thread-matsuri">■ 地元の夏祭りスレ【提灯写真上げてけ】</a><span class="cnt">（411）</span></li>
-          <!-- カモ: コンビニ -->
-          <li><a href="#thread-konbini">■ 近所のコンビニのレジ画面に謎の英単語が出る件</a><span class="cnt">（56）</span></li>          <!-- カモ: ニート -->
-          <li><a href="#thread-neet">■ ニートの部屋　無職歴がついに西暦を超えそう Part.103</a><span class="cnt">（1203）</span></li>
-          <!-- カモ: 在宅 -->
-          <li><a href="#thread-remote">■ 在宅ワーク、もう外の音が怖い</a><span class="cnt">（97）</span></li>
-          <!-- カモ: 推し -->
-          <li><a href="#thread-oshi">■ 今期アニメ感想スレ【ネタバレあり】</a><span class="cnt">（543）</span></li>
-          <!-- カモ: 自販機 -->
-          <li><a href="#thread-vending">■ うちの最寄り駅、自販機に幽霊出るらしい</a><span class="cnt">（44）</span></li>          <!-- カモ: 廃線 -->
-          <li><a href="#thread-tetsu">■ 廃線跡歩いてきた【写真】</a><span class="cnt">（120）</span></li>
-          <!-- カモ: ラーメン -->
-          <li><a href="#thread-ramen">■ 深夜に食べたくなるラーメン挙げてけ</a><span class="cnt">（388）</span></li>
-          <!-- カモ: 古本 -->
-          <li><a href="#thread-furuhon">■ 古本屋で変な紙挟まってた経験ある？</a><span class="cnt">（66）</span></li>
-          <!-- カモ: 路線 -->
-          <li><a href="#thread-rosen">■ 終電後にしか走らない路線バスってある？</a><span class="cnt">（51）</span></li>
+        <div class="thread-pager" id="thread-pager-top" aria-label="スレッド一覧ページ">
+          <span class="pager-label">ページ</span>
+          <a href="?page=1" data-page="1">1</a>
+          <a href="?page=2" data-page="2">2</a>
+          <a href="?page=3" data-page="3">3</a>
+        </div>
+        <ul class="thread-list" id="thread-list" data-active-page="1">
+          <!-- ===== 1ページ目 ===== -->
+          <li data-page="1"><a href="#thread-cat">■ うちの猫の動画上げたら全然伸びないんだが Part.12</a><span class="cnt">（0）</span></li>
+          <li data-page="1"><a href="#thread-sweets">■ コンビニ新作スイーツ感想スレ Part.41</a><span class="cnt">（0）</span></li>
+          <li data-page="1" data-kn-list-clue="1"><a href="#thread-news">■ 【2019】霞ノ杜・神隠し伝言</a><span class="cnt">（0）</span></li>
+          <li data-page="1"><a href="#thread-game">■ 新作RPG攻略スレ Part.07</a><span class="cnt">（0）</span></li>
+          <li data-page="1" data-kn-list-clue="1"><a href="#thread-kanban">■ 山道の看板、文字が毎週消えてる【写真】</a><span class="cnt">（0）</span></li>
+          <li data-page="1"><a href="#thread-ai">■ AI に怪談考えさせたら微妙だった Part.04</a><span class="cnt">（0）</span></li>
+          <li class="thread-ghost" data-page="1"><span>■ マッド探検記 Part.88</span><span class="cnt">（234）</span></li>
+          <li data-page="1" data-kn-list-clue="1"><a href="#thread-horror-vid">■ 心霊スポット巡ってみた動画あった</a><span class="cnt">（0）</span></li>
+          <li data-page="1"><a href="#thread-neet">■ ニートの部屋　無職歴がついに西暦を超えそう Part.103</a><span class="cnt">（0）</span></li>
+          <li class="thread-ghost" data-page="1"><span>■ 深夜のラジオ、変なコーナー増えてない？</span><span class="cnt">（67）</span></li>
+          <li data-page="1"><a href="#thread-konbini">■ 近所のコンビニのレジ画面に謎の英単語が出る件</a><span class="cnt">（0）</span></li>
+          <li data-page="1"><a href="#thread-matsuri">■ 地元の夏祭りスレ【提灯写真上げてけ】</a><span class="cnt">（0）</span></li>
+          <li data-page="1" data-kn-list-clue="1"><a href="#thread-poem">■ 意味わからん詩置いとく Part.2</a><span class="cnt">（0）</span></li>
+          <li data-page="1"><a href="#thread-remote">■ 在宅ワーク、もう外の音が怖い</a><span class="cnt">（0）</span></li>
+          <li data-page="1"><a href="#thread-oshi">■ 今期アニメ感想スレ【ネタバレあり】</a><span class="cnt">（0）</span></li>
+          <!-- ===== 2ページ目 ===== -->
+          <li class="thread-ghost" data-page="2"><span>■ 一人暮らしの防犯、もう限界 Part.19</span><span class="cnt">（89）</span></li>
+          <li data-page="2"><a href="#thread-tetsu">■ 廃線跡歩いてきた【写真】</a><span class="cnt">（0）</span></li>
+          <li class="thread-ghost" data-page="2" data-kn-list-clue="1"><span>■ 【霞ノ杜】古い観光案内に写ってない子</span><span class="cnt">（18）</span></li>
+          <li data-page="2"><a href="#thread-rosen">■ 終電後にしか走らない路線バスってある？</a><span class="cnt">（0）</span></li>
+          <li data-page="2" data-kn-list-clue="1"><a href="#thread-haru">■ 「ハル」っていう子、覚えてる奴いる？</a><span class="cnt">（0）</span></li>
+          <li class="thread-ghost" data-page="2"><span>■ コンビニのレジ、英単語の件 Part.2</span><span class="cnt">（44）</span></li>
+          <li data-page="2"><a href="#thread-furuhon">■ 古本屋で変な紙挟まってた経験ある？</a><span class="cnt">（0）</span></li>
+          <li class="thread-ghost" data-page="2" data-kn-list-clue="1"><span>■ 記録班って知ってる？</span><span class="cnt">（12）</span></li>
+          <li data-page="2"><a href="#thread-vending">■ うちの最寄り駅、自販機に幽霊出るらしい</a><span class="cnt">（0）</span></li>
+          <li class="thread-ghost" data-page="2"><span>■ 駅のホームで聞こえる声【音源なし】</span><span class="cnt">（23）</span></li>
+          <li data-page="2"><a href="#thread-ramen">■ 深夜に食べたくなるラーメン挙げてけ</a><span class="cnt">（0）</span></li>
+          <li class="thread-ghost" data-page="2" data-kn-list-clue="1"><span>■ 三人で山に入った話、続き Part.3</span><span class="cnt">（31）</span></li>
+          <li class="thread-ghost" data-page="2"><span>■ うどん vs そば 永遠の戦い Part.55</span><span class="cnt">（156）</span></li>
+          <li class="thread-ghost" data-page="2"><span>■ 心霊アプリ、当たりすぎて逆に怖い</span><span class="cnt">（54）</span></li>
+          <li class="thread-ghost" data-page="2"><span>■ 深夜ドライブ、後部座席が重い</span><span class="cnt">（77）</span></li>
+          <!-- ===== 3ページ目 ===== -->
+          <li class="thread-ghost" data-page="3"><span>■ 実家の蔵、整理中に箱が多すぎる</span><span class="cnt">（45）</span></li>
+          <li class="thread-ghost" data-page="3" data-kn-list-clue="1"><span>■ 霞ノ杜・山の入り口、看板の写真ください</span><span class="cnt">（9）</span></li>
+          <li class="thread-ghost" data-page="3"><span>■ スマホカメラ、写ってないはずのノイズ</span><span class="cnt">（63）</span></li>
+          <li class="thread-ghost" data-page="3" data-kn-list-clue="1"><span>■ 昔の裏板ログ、誰か保存してる？</span><span class="cnt">（15）</span></li>
+          <li class="thread-ghost" data-page="3"><span>■ 引っ越し先、前の住人の荷物が残ってた</span><span class="cnt">（38）</span></li>
+          <li class="thread-ghost" data-page="3"><span>■ ニートの部屋 Part.104【西暦更新】</span><span class="cnt">（892）</span></li>
+          <li class="thread-ghost" data-page="3"><span>■ 地図アプリ、存在しない道を案内する</span><span class="cnt">（41）</span></li>
+          <li class="thread-ghost" data-page="3"><span>■ 消えた系ユーチューバー、復活しない</span><span class="cnt">（22）</span></li>
+          <li class="thread-ghost" data-page="3" data-kn-list-clue="1"><span>■ 匿名情報、どこまで信じていい？</span><span class="cnt">（8）</span></li>
+          <li class="thread-ghost" data-page="3"><span>■ 猫動画 Part.11【伸びない】</span><span class="cnt">（801）</span></li>
+          <li class="thread-ghost" data-page="3"><span>■ コンビニスイーツ Part.40</span><span class="cnt">（590）</span></li>
+          <li class="thread-ghost" data-page="3"><span>■ 誰もいないはずの家、電気ついてた</span><span class="cnt">（33）</span></li>
+          <li class="thread-ghost" data-page="3"><span>■ 最終レスだけ残ってるスレ</span><span class="cnt">（5）</span></li>
+          <li class="thread-ghost" data-page="3" data-kn-list-clue="1"><span>■ 【過去ログ】霞ノ杜関連スレまとめ</span><span class="cnt">（404）</span></li>
+          <li class="thread-ghost" data-page="3"><span>■ 新作RPG Part.06【アーカイブ】</span><span class="cnt">（988）</span></li>
         </ul>
+        <div class="thread-pager" id="thread-pager-bottom" aria-label="スレッド一覧ページ">
+          <span class="pager-label">ページ</span>
+          <a href="?page=1" data-page="1">1</a>
+          <a href="?page=2" data-page="2">2</a>
+          <a href="?page=3" data-page="3">3</a>
+        </div>
       </div>
     </div>
 
     <!-- ===================== 謎スレ A：看板 ===================== -->
-    
+    <article class="thread-box" data-kn-story-clue="1" id="thread-kanban">
+      <div class="thread-head"><a href="#thread-kanban">■ 山道の看板、文字が毎週消えてる【写真】</a></div>
+      <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2019/07/28(日) 16:02:11 ID:Kb2019a</span>
+        <div class="res-body">霞ノ杜方面の旧道、入口に木の看板あるじゃん。毎週通るたびに文字が欠けてる。誰が削ってるのか知りたい。</div></div>
+      <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2019/07/29(月) 09:18:44 ID:Kb2019b</span>
+        <div class="res-body">消えてるのは下の行だけ。上の「立入禁止」は何年も同じ。</div></div>
+      <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2019/07/30(火) 21:55:03 ID:Kb2019c</span>
+        <div class="res-body">写真撮った翌週、欠けてた部分がまた違う字になってた。錆で自然に消える感じじゃない。</div></div>
+      <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2019/08/01(木) 03:12:40 ID:Kb2019d</span>
+        <div class="res-body">地元の人は「看板の下は読んじゃダメ」って言う。意味不明。</div></div>
+    </article>
     <!-- ===================== カモ：猫 (→ Yootube 導線) ===================== -->
     <article class="thread-box" id="thread-cat">
       <div class="thread-head"><a href="#thread-cat">■ うちの猫の動画上げたら全然伸びないんだが Part.12</a></div>
@@ -371,7 +443,17 @@
     </article>
 
     <!-- ===================== 謎スレ E：ハル ===================== -->
-    
+    <article class="thread-box" data-kn-story-clue="1" id="thread-haru">
+      <div class="thread-head"><a href="#thread-haru">■ 「ハル」っていう子、覚えてる奴いる？</a></div>
+      <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2019/09/02(月) 20:11:08 ID:Hr2019a</span>
+        <div class="res-body">霞ノ杜の話でたまに出てくる「ハル」ってあだ名、本名じゃないらしい。同級生の記憶がバラバラ。</div></div>
+      <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2019/09/03(火) 07:40:22 ID:Hr2019b</span>
+        <div class="res-body">クラス写真に写ってる人数と名簿の人数が合わないって書き込み、去年消された。</div></div>
+      <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2019/09/03(火) 22:03:51 ID:Hr2019c</span>
+        <div class="res-body">「ハル」は春生まれじゃなくて、帰ってこない子の呼び名だって噂もある。真偽不明。</div></div>
+      <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2019/09/04(水) 01:17:33 ID:Hr2019d</span>
+        <div class="res-body">名前を書き込もうとすると送信エラーになる。今この板でもそう？</div></div>
+    </article>
     <!-- ===================== カモ：ニート ===================== -->
     <article class="thread-box" id="thread-neet">
       <div class="thread-head"><a href="#thread-neet">■ ニートの部屋　無職歴がついに西暦を超えそう Part.103</a></div>
@@ -405,7 +487,18 @@
     </article>
 
     <!-- ===================== 謎スレ F：詩（最重要・目立たない） ===================== -->
-    
+    <article class="thread-box" data-kn-story-clue="1" id="thread-poem">
+      <div class="thread-head"><a href="#thread-poem">■ 意味わからん詩置いとく Part.2</a></div>
+      <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2019/08/20(火) 02:08:14 ID:Pm2019a</span>
+        <div class="res-body">旧道で拾ったメモ。誰のかわからん。<pre class="poem">霧の里　三人の足
+二人だけ　戻る門
+看板の下　名を書くな
+春は　まだ　山の中</pre></div></div>
+      <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2019/08/20(火) 08:33:02 ID:Pm2019b</span>
+        <div class="res-body">字が少ない割に妙に具体的。霞ノ杜っぽくない？</div></div>
+      <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2019/08/21(水) 19:50:41 ID:Pm2019c</span>
+        <div class="res-body">>>1 四行目だけ、前に見た版と語順が違った気がする。写し直した？</div></div>
+    </article>
     <!-- ===================== カモ：廃線 ===================== -->
     <article class="thread-box" id="thread-tetsu">
       <div class="thread-head"><a href="#thread-tetsu">■ 廃線跡歩いてきた【写真】</a></div>
@@ -459,6 +552,9 @@
   <script>
     (function () {
       var KN_FP_KEY = "signal_trace_kn_footprint_v2";
+      var THREAD_LIST = document.getElementById("thread-list");
+      var TOTAL_PAGES = 3;
+
       function knFootprint() {
         try {
           return localStorage.getItem(KN_FP_KEY) || "";
@@ -470,9 +566,73 @@
         var f = knFootprint();
         return f === "purged_delete" || f === "purged_keep" || f === "purged_partial";
       }
+      function syncThreadCounts() {
+        document.querySelectorAll("article.thread-box[id]").forEach(function (box) {
+          var count = box.querySelectorAll(".res").length;
+          document.querySelectorAll('.thread-list a[href="#' + box.id + '"]').forEach(function (link) {
+            var cnt = link.parentElement && link.parentElement.querySelector(".cnt");
+            if (cnt) cnt.textContent = "（" + count + "）";
+          });
+        });
+      }
+      function parsePageFromLocation() {
+        var m = location.search.match(/(?:^|[?&])page=(\d+)/);
+        var n = m ? parseInt(m[1], 10) : 1;
+        if (!n || n < 1) return 1;
+        if (n > TOTAL_PAGES) return TOTAL_PAGES;
+        return n;
+      }
+      function pageForThreadId(id) {
+        var link = document.querySelector('.thread-list a[href="#' + id + '"]');
+        if (!link) return null;
+        var row = link.closest("li[data-page]");
+        if (!row) return null;
+        return parseInt(row.getAttribute("data-page"), 10) || null;
+      }
+      function initialListPage() {
+        var hash = (location.hash || "").replace(/^#/, "");
+        if (hash) {
+          var fromHash = pageForThreadId(hash);
+          if (fromHash) return fromHash;
+        }
+        return parsePageFromLocation();
+      }
+      function renderPager(page) {
+        document.querySelectorAll(".thread-pager").forEach(function (pager) {
+          Array.prototype.slice.call(pager.children).forEach(function (child) {
+            if (!child.classList.contains("pager-label")) child.remove();
+          });
+          for (var p = 1; p <= TOTAL_PAGES; p++) {
+            if (p === page) {
+              var current = document.createElement("span");
+              current.className = "pager-num current";
+              current.textContent = String(p);
+              pager.appendChild(current);
+            } else {
+              var link = document.createElement("a");
+              link.href = "?page=" + p;
+              link.setAttribute("data-page", String(p));
+              link.textContent = String(p);
+              pager.appendChild(link);
+            }
+          }
+        });
+      }
+      function setThreadListPage(page, scrollTop) {
+        if (!THREAD_LIST) return;
+        THREAD_LIST.setAttribute("data-active-page", String(page));
+        renderPager(page);
+        if (scrollTop) {
+          var top = document.getElementById("top");
+          if (top) top.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
       function knApplyFootprint() {
         if (!knPurged()) return;
         document.querySelectorAll('[data-kn-story-clue="1"]').forEach(function (el) {
+          el.style.display = "none";
+        });
+        document.querySelectorAll('[data-kn-list-clue="1"]').forEach(function (el) {
           el.style.display = "none";
         });
       }
@@ -483,6 +643,18 @@
         knApplyFootprint();
       }
       window.addEventListener("storage", knOnFootprintStorage);
+
+      document.querySelectorAll(".thread-pager").forEach(function (pager) {
+        pager.addEventListener("click", function (e) {
+          var link = e.target.closest("a[data-page]");
+          if (!link) return;
+          e.preventDefault();
+          var page = parseInt(link.getAttribute("data-page"), 10);
+          if (!page) return;
+          history.replaceState(null, "", "?page=" + page);
+          setThreadListPage(page, true);
+        });
+      });
 
       var msg =
         "このサイトはそろそろサービスを終了するため（管理者が飽きたため( ´∀｀)）\n" +
@@ -498,6 +670,8 @@
         });
       });
 
+      syncThreadCounts();
+      setThreadListPage(initialListPage(), false);
       knApplyFootprint();
     })();
   </script>
