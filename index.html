@@ -68,6 +68,31 @@
     .thread-list[data-active-page="1"] li[data-page="1"],
     .thread-list[data-active-page="2"] li[data-page="2"],
     .thread-list[data-active-page="3"] li[data-page="3"] { display: block; }
+        .res.res-collapsed { display: none; }
+    .res.res-generated { opacity: 1; }
+    .thread-res-footer {
+      border-top: 1px dashed #b8a88c;
+      background: #eee8dc;
+      padding: 7px 10px;
+      text-align: center;
+    }
+    .thread-res-footer .thread-res-trunc {
+      padding: 0 0 6px;
+      background: transparent;
+      border: none;
+      margin: 0;
+    }
+    .thread-load-more {
+      font-family: inherit;
+      font-size: 11px;
+      padding: 3px 14px;
+      cursor: pointer;
+      background: #faf8f2;
+      border: 1px solid #b8a88c;
+      color: #0000c0;
+    }
+    .thread-load-more:hover { background: #fff; color: #c00; }
+    .thread-load-more[hidden] { display: none; }
     .thread-res-trunc {
       padding: 7px 10px;
       background: #eee8dc;
@@ -285,12 +310,10 @@
           <a href="?page=3" data-page="3">3</a>
         </div>
         <ul class="thread-list" id="thread-list" data-active-page="1">
-          <!-- ===== 1ページ目 ===== -->
+          <!-- ===== 1ページ目（霞ノ杜専用スレなし） ===== -->
           <li data-page="1"><a href="#thread-cat">■ うちの猫の動画上げたら全然伸びないんだが Part.12</a><span class="cnt">（0）</span></li>
           <li data-page="1"><a href="#thread-sweets">■ コンビニ新作スイーツ感想スレ Part.41</a><span class="cnt">（0）</span></li>
-          <li data-page="1" data-kn-list-clue="1"><a href="#thread-news">■ 【2019】霞ノ杜・神隠し伝言</a><span class="cnt">（0）</span></li>
           <li data-page="1"><a href="#thread-game">■ 新作RPG攻略スレ Part.07</a><span class="cnt">（0）</span></li>
-          <li data-page="1" data-kn-list-clue="1"><a href="#thread-kanban">■ 山道の看板、文字が毎週消えてる【写真】</a><span class="cnt">（0）</span></li>
           <li data-page="1"><a href="#thread-ai">■ AI に怪談考えさせたら微妙だった Part.04</a><span class="cnt">（0）</span></li>
           <li data-page="1"><a href="#thread-mad">■ マッド探検記 Part.88</a><span class="cnt">（234）</span></li>
           <li data-page="1" data-kn-list-clue="1"><a href="#thread-horror-vid">■ 心霊スポット巡ってみた動画あった</a><span class="cnt">（0）</span></li>
@@ -298,26 +321,29 @@
           <li data-page="1"><a href="#thread-radio">■ 深夜のラジオ、変なコーナー増えてない？</a><span class="cnt">（67）</span></li>
           <li data-page="1"><a href="#thread-konbini">■ 近所のコンビニのレジ画面に謎の英単語が出る件</a><span class="cnt">（0）</span></li>
           <li data-page="1"><a href="#thread-matsuri">■ 地元の夏祭りスレ【提灯写真上げてけ】</a><span class="cnt">（0）</span></li>
-          <li data-page="1" data-kn-list-clue="1"><a href="#thread-poem">■ 意味わからん詩置いとく Part.2</a><span class="cnt">（0）</span></li>
           <li data-page="1"><a href="#thread-remote">■ 在宅ワーク、もう外の音が怖い</a><span class="cnt">（0）</span></li>
           <li data-page="1"><a href="#thread-oshi">■ 今期アニメ感想スレ【ネタバレあり】</a><span class="cnt">（0）</span></li>
+          <li data-page="1"><a href="#thread-konbini2">■ コンビニのレジ、英単語の件 Part.2</a><span class="cnt">（44）</span></li>
+          <li data-page="1"><a href="#thread-tetsu">■ 廃線跡歩いてきた【写真】</a><span class="cnt">（0）</span></li>
+          <li data-page="1"><a href="#thread-udon">■ うどん vs そば 永遠の戦い Part.55</a><span class="cnt">（156）</span></li>
           <!-- ===== 2ページ目 ===== -->
           <li data-page="2"><a href="#thread-bouhan">■ 一人暮らしの防犯、もう限界 Part.19</a><span class="cnt">（89）</span></li>
-          <li data-page="2"><a href="#thread-tetsu">■ 廃線跡歩いてきた【写真】</a><span class="cnt">（0）</span></li>
+          <li data-page="2" data-kn-list-clue="1"><a href="#thread-news">■ 【2019】霞ノ杜・神隠し伝言</a><span class="cnt">（0）</span></li>
+          <li data-page="2" data-kn-list-clue="1"><a href="#thread-kanban">■ 山道の看板、文字が毎週消えてる【写真】</a><span class="cnt">（0）</span></li>
           <li data-page="2" data-kn-list-clue="1"><a href="#thread-kankou">■ 【霞ノ杜】古い観光案内に写ってない子</a><span class="cnt">（18）</span></li>
-          <li data-page="2"><a href="#thread-rosen">■ 終電後にしか走らない路線バスってある？</a><span class="cnt">（0）</span></li>
           <li data-page="2" data-kn-list-clue="1"><a href="#thread-haru">■ 「ハル」っていう子、覚えてる奴いる？</a><span class="cnt">（0）</span></li>
-          <li data-page="2"><a href="#thread-konbini2">■ コンビニのレジ、英単語の件 Part.2</a><span class="cnt">（44）</span></li>
-          <li data-page="2"><a href="#thread-furuhon">■ 古本屋で変な紙挟まってた経験ある？</a><span class="cnt">（0）</span></li>
-          <li data-page="2" data-kn-list-clue="1"><a href="#thread-kiroku">■ 記録班って知ってる？</a><span class="cnt">（12）</span></li>
-          <li data-page="2"><a href="#thread-vending">■ うちの最寄り駅、自販機に幽霊出るらしい</a><span class="cnt">（0）</span></li>
-          <li data-page="2"><a href="#thread-ekikoe">■ 駅のホームで聞こえる声【音源なし】</a><span class="cnt">（23）</span></li>
-          <li data-page="2"><a href="#thread-ramen">■ 深夜に食べたくなるラーメン挙げてけ</a><span class="cnt">（0）</span></li>
           <li data-page="2" data-kn-list-clue="1"><a href="#thread-sannin">■ 三人で山に入った話、続き Part.3</a><span class="cnt">（31）</span></li>
-          <li data-page="2"><a href="#thread-udon">■ うどん vs そば 永遠の戦い Part.55</a><span class="cnt">（156）</span></li>
+          <li data-page="2" data-kn-list-clue="1"><a href="#thread-kiroku">■ 記録班って知ってる？</a><span class="cnt">（12）</span></li>
+          <li data-page="2"><a href="#thread-rosen">■ 終電後にしか走らない路線バスってある？</a><span class="cnt">（0）</span></li>
+          <li data-page="2"><a href="#thread-furuhon">■ 古本屋で変な紙挟まってた経験ある？</a><span class="cnt">（0）</span></li>
+          <li data-page="2"><a href="#thread-vending">■ うちの最寄り駅、自販機に幽霊出るらしい</a><span class="cnt">（0）</span></li>
+          <li data-page="2"><a href="#thread-ramen">■ 深夜に食べたくなるラーメン挙げてけ</a><span class="cnt">（0）</span></li>
+          <li data-page="2"><a href="#thread-ekikoe">■ 駅のホームで聞こえる声【音源なし】</a><span class="cnt">（23）</span></li>
           <li data-page="2"><a href="#thread-reiapp">■ 心霊アプリ、当たりすぎて逆に怖い</a><span class="cnt">（54）</span></li>
           <li data-page="2"><a href="#thread-drive">■ 深夜ドライブ、後部座席が重い</a><span class="cnt">（77）</span></li>
+          <li data-page="2"><a href="#thread-game06">■ 新作RPG Part.06【アーカイブ】</a><span class="cnt">（988）</span></li>
           <!-- ===== 3ページ目 ===== -->
+          <li data-page="3" data-kn-list-clue="1"><a href="#thread-poem">■ 意味わからん詩置いとく Part.2</a><span class="cnt">（0）</span></li>
           <li data-page="3"><a href="#thread-kura">■ 実家の蔵、整理中に箱が多すぎる</a><span class="cnt">（45）</span></li>
           <li data-page="3" data-kn-list-clue="1"><a href="#thread-kanbanphoto">■ 霞ノ杜・山の入り口、看板の写真ください</a><span class="cnt">（9）</span></li>
           <li data-page="3"><a href="#thread-camera">■ スマホカメラ、写ってないはずのノイズ</a><span class="cnt">（63）</span></li>
@@ -332,7 +358,6 @@
           <li data-page="3"><a href="#thread-denki">■ 誰もいないはずの家、電気ついてた</a><span class="cnt">（33）</span></li>
           <li data-page="3"><a href="#thread-lastres">■ 最終レスだけ残ってるスレ</a><span class="cnt">（5）</span></li>
           <li data-page="3" data-kn-list-clue="1"><a href="#thread-knarchive">■ 【過去ログ】霞ノ杜関連スレまとめ</a><span class="cnt">（404）</span></li>
-          <li data-page="3"><a href="#thread-game06">■ 新作RPG Part.06【アーカイブ】</a><span class="cnt">（988）</span></li>
         </ul>
         <div class="thread-pager" id="thread-pager-bottom" aria-label="スレッド一覧ページ">
           <span class="pager-label">ページ</span>
@@ -347,7 +372,7 @@
     <article class="thread-box" data-total-res="38" data-kn-story-clue="1" id="thread-kanban">
       <div class="thread-head"><a href="#thread-kanban">■ 山道の看板、文字が毎週消えてる【写真】</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2019/07/28(日) 16:02:11 ID:Kb2019a</span>
-        <div class="res-body">霞ノ杜方面の旧道、入口に木の看板あるじゃん。毎週通るたびに文字が欠けてる。誰が削ってるのか知りたい。</div></div>
+        <div class="res-body">山奥の旧道、入口に木の看板がある。毎週通るたびに下の行だけ文字が欠けてる。どこの県かは覚えてない。</div></div>
       <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2019/07/29(月) 09:18:44 ID:Kb2019b</span>
         <div class="res-body">消えてるのは下の行だけ。上の「立入禁止」は何年も同じ。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2019/07/30(火) 21:55:03 ID:Kb2019c</span>
@@ -358,7 +383,7 @@
       <div class="res"><span class="res-num">6</span><span class="res-name">名無しさん</span><span class="res-date">2019/08/03(土) 02:08:11 ID:Kb2019f</span>
         <div class="res-body">読めた人いる？ いるなら書くな</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>38</strong>件中、最新6件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>38</strong>件中、<span data-role="shown-count">6</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
     <!-- ===================== カモ：猫 (→ Yootube 導線) ===================== -->
     <article class="thread-box" data-total-res="89" id="thread-cat">
@@ -376,8 +401,10 @@
         <div class="res-body">89レスも伸びない。アルゴリズム詐欺</div></div>
       <div class="res"><span class="res-num">6</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/07(土) 03:17:01 ID:Mv3wBk4R</span>
         <div class="res-body">>>4 3:17 同じ時間。うちの猫も起きる</div></div>
+      <div class="res"><span class="res-num">7</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/08(日) 16:44:02 ID:Mv3wBk5S</span>
+        <div class="res-body">コメ欄、霞ノ杜？ って単語だけ流れてくる。猫動画なのに。</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>89</strong>件中、最新6件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>89</strong>件中、<span data-role="shown-count">6</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <!-- ===================== カモ：スイーツ (→ GougleMap 導線) ===================== -->
@@ -391,11 +418,11 @@
           結構便利。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/08(日) 15:12:09 ID:Lq8vNm0K</span>
         <div class="res-body">あれ、スイーツ以外の謎ピンも混じってるよね？</div></div>      <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/08(日) 16:44:22 ID:Lq8vNm1L</span>
-        <div class="res-body">612レスのスイーツ板、本当は怪談情報の隠れ家説</div></div>
+        <div class="res-body">612レスのスイーツ板、なんでこんなに盛り上がってる</div></div>
       <div class="res"><span class="res-num">5</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/09(月) 12:11:08 ID:Lq8vNm2M</span>
         <div class="res-body">>>4 それ Part.40 でも言ってた</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>612</strong>件中、最新5件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>612</strong>件中、<span data-role="shown-count">5</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <!-- ===================== 謎スレ B：2019霞ノ杜 ===================== -->
@@ -415,7 +442,7 @@
       <div class="res"><span class="res-num">7</span><span class="res-name">名無しさん</span><span class="res-date">2019/08/17(土) 03:17:18 ID:Kn2019g</span>
         <div class="res-body">>>6 消されたページ、タイトルだけ「神隠し」</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>47</strong>件中、最新7件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>47</strong>件中、<span data-role="shown-count">7</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
     <!-- ===================== カモ：ゲーム ===================== -->
     <article class="thread-box" data-total-res="1031" id="thread-game">
@@ -428,9 +455,9 @@
         <div class="res-body">攻略wikiに載ってる経験値、最新パッチで全部古い。注意。</div></div>      <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/11(水) 08:22:11 ID:Op4sLm9L</span>
         <div class="res-body">1031レス… ボス5の噂、まだ未検証</div></div>
       <div class="res"><span class="res-num">5</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/11(水) 20:01:44 ID:Op4sLm0M</span>
-        <div class="res-body">マップに霞ノ杜っぽい地名。気のせい？</div></div>
+        <div class="res-body">マップに実在しない町名っぽいのある。気のせい？</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>1031</strong>件中、最新5件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>1031</strong>件中、<span data-role="shown-count">5</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <!-- ===================== カモ：AI ===================== -->
@@ -445,8 +472,10 @@
         <div class="res-body">76レス中、怪談プロンプト成功例ゼロ</div></div>
       <div class="res"><span class="res-num">5</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/23(月) 09:44:02 ID:Ts8mWk2P</span>
         <div class="res-body">「三人入って二人」だけは毎回うまい。なぜ</div></div>
+      <div class="res"><span class="res-num">6</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/24(火) 11:02:11 ID:Ts8mWk3Q</span>
+        <div class="res-body">プロンプトに「転校」入れたら、出力が妙に統一される。地名は出さないのに。</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>76</strong>件中、最新5件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>76</strong>件中、<span data-role="shown-count">5</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <!-- ===================== カモ：心霊動画 ===================== -->
@@ -462,7 +491,7 @@
       <div class="res"><span class="res-num">5</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/20(金) 08:11:11 ID:Vp2sBm1Z</span>
         <div class="res-body">コメ欄「まだ山の中」で埋まってる。消せない</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>22</strong>件中、最新5件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>22</strong>件中、<span data-role="shown-count">5</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <!-- ===================== カモ：祭り ===================== -->
@@ -478,7 +507,7 @@
       <div class="res"><span class="res-num">5</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/18(日) 21:02:08 ID:Mt2xWp2U</span>
         <div class="res-body">411レス、写真祭りすぎ</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>411</strong>件中、最新5件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>411</strong>件中、<span data-role="shown-count">5</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <!-- ===================== カモ：コンビニ ===================== -->
@@ -492,25 +521,25 @@
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/05(木) 08:33:22 ID:Vn4jKl8O</span>
         <div class="res-body">>>3 <a href="#thread-konbini2">Part.2</a> も見ろ</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>56</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>56</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <!-- ===================== 謎スレ E：ハル ===================== -->
     <article class="thread-box" data-total-res="52" data-kn-story-clue="1" id="thread-haru">
       <div class="thread-head"><a href="#thread-haru">■ 「ハル」っていう子、覚えてる奴いる？</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2019/09/02(月) 20:11:08 ID:Hr2019a</span>
-        <div class="res-body">霞ノ杜の話でたまに出てくる「ハル」ってあだ名、本名じゃないらしい。同級生の記憶がバラバラ。</div></div>
+        <div class="res-body">地方の小さな町の話でたまに出てくる「ハル」って呼び方。同級生の記憶がバラバラ。</div></div>
       <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2019/09/03(火) 07:40:22 ID:Hr2019b</span>
-        <div class="res-body">クラス写真に写ってる人数と名簿の人数が合わないって書き込み、去年消された。</div></div>
+        <div class="res-body">転校したはずなのに、俺の記憶にいない。他の奴も「いた気がする／いない」で割れる。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2019/09/03(火) 22:03:51 ID:Hr2019c</span>
-        <div class="res-body">「ハル」は春生まれじゃなくて、帰ってこない子の呼び名だって噂もある。真偽不明。</div></div>
+        <div class="res-body">卒アル、名前だけ消し込みされてるページがあるって言う奴もいる。見た本人いない。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2019/09/04(水) 01:17:33 ID:Hr2019d</span>
         <div class="res-body">名前を書き込もうとすると送信エラーになる。今この板でもそう？</div></div>      <div class="res"><span class="res-num">5</span><span class="res-name">名無しさん</span><span class="res-date">2019/09/05(木) 08:22:01 ID:Hr2019e</span>
-        <div class="res-body">52レス。クラス名簿、ページだけ欠番</div></div>
+        <div class="res-body">52レス。スレ自体、たまに読み込めない時間帯がある</div></div>
       <div class="res"><span class="res-num">6</span><span class="res-name">名無しさん</span><span class="res-date">2019/09/05(木) 22:11:44 ID:Hr2019f</span>
-        <div class="res-body">ハル＝春、ではなく「帰る」の略？ 無理やりすぎ</div></div>
+        <div class="res-body">>>4 今試したら普通に書けた。環境依存？</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>52</strong>件中、最新6件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>52</strong>件中、<span data-role="shown-count">6</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
     <!-- ===================== カモ：ニート ===================== -->
     <article class="thread-box" data-total-res="1203" id="thread-neet">
@@ -523,9 +552,9 @@
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/04/29(土) 02:33:11 ID:Ne7tAa2D</span>
         <div class="res-body">1200レス超えのニートスレ、健康診断どうなってる</div></div>
       <div class="res"><span class="res-num">5</span><span class="res-name">名無しさん</span><span class="res-date">2024/04/30(日) 18:11:08 ID:Ne7tAa3E</span>
-        <div class="res-body">>>4 霞ノ杜の話混ざる前は普通だったのに</div></div>
+        <div class="res-body">>>4 オカルト混ざる前は普通だったのに</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>1203</strong>件中、最新5件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>1203</strong>件中、<span data-role="shown-count">5</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <!-- ===================== カモ：在宅 ===================== -->
@@ -539,7 +568,7 @@
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/02(月) 23:44:01 ID:Wf2tLm1T</span>
         <div class="res-body">在宅97レスのうち半分、同じ人の叫び</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>97</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>97</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <!-- ===================== カモ：推し ===================== -->
@@ -549,13 +578,13 @@
         <div class="res-body">3話の引きやばい。来週まで生きてる気がしない。</div></div>      <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/14(土) 22:33:08 ID:An2dLm1G</span>
         <div class="res-body">OP主役の名前、なんか既視感ある</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/15(日) 00:11:44 ID:An2dLm2H</span>
-        <div class="res-body">>>2 オフトピ：霞ノ杜の子供失踪、似た設定の漫画あった？</div></div>
+        <div class="res-body">>>2 オフトピ：地方都市の失踪ネタ、似た設定の漫画あった？</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/15(日) 21:02:22 ID:An2dLm3I</span>
         <div class="res-body">ネタバレ：4話で「三人」ってセリフ。気のせい？</div></div>
       <div class="res"><span class="res-num">5</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/16(月) 08:44:55 ID:An2dLm4J</span>
         <div class="res-body">543レスもう追えん。アニメだけ見る</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>543</strong>件中、最新5件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>543</strong>件中、<span data-role="shown-count">5</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <!-- ===================== カモ：自販機 ===================== -->
@@ -569,7 +598,7 @@
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/01(日) 22:15:33 ID:Vd1nMp0U</span>
         <div class="res-body">自販機の液晶、PENDINGって一瞬出る</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>44</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>44</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <!-- ===================== 謎スレ F：詩（最重要・目立たない） ===================== -->
@@ -581,14 +610,14 @@
 看板の下　名を書くな
 春は　まだ　山の中</pre></div></div>
       <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2019/08/20(火) 08:33:02 ID:Pm2019b</span>
-        <div class="res-body">字が少ない割に妙に具体的。霞ノ杜っぽくない？</div></div>
+        <div class="res-body">字が少ない割に地名っぽい字がないのに妙に具体的。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2019/08/21(水) 19:50:41 ID:Pm2019c</span>
-        <div class="res-body">>>1 四行目だけ、前に見た版と語順が違った気がする。写し直した？</div></div>      <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2019/08/22(木) 07:15:02 ID:Pm2019d</span>
+        <div class="res-body">>>1 前に見たコピーと句読点だけ違う。同じメモ？</div></div>      <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2019/08/22(木) 07:15:02 ID:Pm2019d</span>
         <div class="res-body">28レス。詩スレ、他板から移植された説</div></div>
       <div class="res"><span class="res-num">5</span><span class="res-name">名無しさん</span><span class="res-date">2019/08/22(木) 23:33:18 ID:Pm2019e</span>
-        <div class="res-body">>>1 四行目「春はまだ山の中」、消えた子の… 書くな</div></div>
+        <div class="res-body">>>1 意味不明。スパム？ 詩スレなのに真面目に返すな</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>28</strong>件中、最新5件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>28</strong>件中、<span data-role="shown-count">5</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
     <!-- ===================== カモ：廃線 ===================== -->
     <article class="thread-box" data-total-res="120" id="thread-tetsu">
@@ -599,9 +628,9 @@
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/23(金) 09:11:02 ID:Rb3tMm8Z</span>
         <div class="res-body">>>2 逆光だろ。でも端の影だけ消えてる</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/24(土) 18:44:21 ID:Rb3tMm9A</span>
-        <div class="res-body">廃線の先、霞ノ杜方面の旧道につながる説</div></div>
+        <div class="res-body">廃線の先、山側の旧道につながる説</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>120</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>120</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <!-- ===================== カモ：ラーメン ===================== -->
@@ -613,9 +642,9 @@
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/15(日) 03:22:44 ID:Rm1nLm9S</span>
         <div class="res-body">388レス深夜ラーメン会、健康に悪すぎ</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/16(月) 01:55:11 ID:Rm1nLm0T</span>
-        <div class="res-body">霞ノ杜のそば屋、ラーメンもやってるらしい</div></div>
+        <div class="res-body">地方のそば屋、ラーメンもやってるらしい</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>388</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>388</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <!-- ===================== カモ：古本 ===================== -->
@@ -629,7 +658,7 @@
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/30(金) 21:11:08 ID:Fh2nBn8N</span>
         <div class="res-body">古本屋の店主「返してくれて助かった」←何返した</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>66</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>66</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <!-- ===================== カモ：路線 ===================== -->
@@ -641,9 +670,9 @@
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/04(水) 00:33:22 ID:Rs5dLm0Z</span>
         <div class="res-body">乗った人いる？ いないよな</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/05(木) 23:01:11 ID:Rs5dLm1A</span>
-        <div class="res-body">霞ノ杜行き、終電後だけ出る噂と一致</div></div>
+        <div class="res-body">行き先表示が存在しない町名。終電後だけ出る噂と一致</div></div>
 
-      <div class="thread-res-trunc">このスレッドは全<strong>51</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>51</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="234" id="thread-mad">
@@ -653,12 +682,12 @@
       <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2024/06/12(水) 19:45:33 ID:Md88b</span>
         <div class="res-body">山奥系はマナー厳守。ゴミ持ち帰れ。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/06/12(水) 20:11:08 ID:Md88c</span>
-        <div class="res-body">>>1 霞ノ杜方面の旧道、看板だけ撮って帰った。中は入ってない。</div></div>
+        <div class="res-body">>>1 県境付近の旧道、看板だけ撮って帰った。中は入ってない。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/06/12(水) 21:03:44 ID:Md88d</span>
         <div class="res-body">看板の下、読めない文字がある。毎週変わるらしい。</div></div>
       <div class="res"><span class="res-num">5</span><span class="res-name">名無しさん</span><span class="res-date">2024/06/13(木) 08:30:12 ID:Md88e</span>
         <div class="res-body">Part.87で言ってた件、続報来てないな。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>234</strong>件中、最新5件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>234</strong>件中、<span data-role="shown-count">5</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="67" id="thread-radio">
@@ -671,7 +700,7 @@
         <div class="res-body">録音してる人いる？</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/07/04(木) 01:55:40 ID:Rd67d</span>
         <div class="res-body">再放送なし。幻聴じゃない。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>67</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>67</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="89" id="thread-bouhan">
@@ -684,7 +713,9 @@
         <div class="res-body">>>1 同じ時間。うちも。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/05/21(火) 22:11:33 ID:Bh89d</span>
         <div class="res-body">防犯より心霊の域。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>89</strong>件中、最新4件を表示しています。</div>
+      <div class="res"><span class="res-num">5</span><span class="res-name">名無しさん</span><span class="res-date">2024/05/22(水) 08:11:44 ID:Bh89e</span>
+        <div class="res-body">近所の話、神隠しみたいなのがあるらしい。うちの件と関係ある？ 知らんけど。</div></div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>89</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="18" id="thread-kankou" data-kn-story-clue="1">
@@ -697,7 +728,7 @@
         <div class="res-body">同じ子、別のページにもいる。名前の記載なし。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2019/06/10(月) 20:15:18 ID:Kg18d</span>
         <div class="res-body">町役場に聞いたら「その版は廃棄済み」だけ。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>18</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>18</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="44" id="thread-konbini2">
@@ -710,7 +741,7 @@
         <div class="res-body">店員「本部のテスト」って言い方、毎回同じ。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/07(土) 08:44:21 ID:Kp44d</span>
         <div class="res-body">>>1 <a href="#thread-konbini">Part.1</a> と合わせて見ろ。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>44</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>44</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="12" id="thread-kiroku" data-kn-story-clue="1">
@@ -720,10 +751,10 @@
       <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2019/10/01(火) 18:33:11 ID:Kr12b</span>
         <div class="res-body">返信こない。読んでるだけっぽい。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2019/10/02(水) 07:15:02 ID:Kr12c</span>
-        <div class="res-body">霞ノ杜のスレ、記録班経由で消された説。</div></div>
+        <div class="res-body">古いスレ、記録班経由で消された説。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2019/10/02(水) 22:01:33 ID:Kr12d</span>
         <div class="res-body">固定の情報提供フォームから繋がる噂。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>12</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>12</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="23" id="thread-ekikoe">
@@ -736,7 +767,7 @@
         <div class="res-body">駅員「よくある」顔しなかった。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/06(火) 21:33:08 ID:Ek23d</span>
         <div class="res-body">録音しようとすると機械だけノイズ。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>23</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>23</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="31" id="thread-sannin" data-kn-story-clue="1">
@@ -746,10 +777,10 @@
       <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2019/07/16(火) 08:22:40 ID:Sn31b</span>
         <div class="res-body">戻った二人、同じ説明しかできない。「霧が出た」だけ。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2019/07/16(火) 19:44:02 ID:Sn31c</span>
-        <div class="res-body">消えた子の呼び名、ここには書けない。</div></div>
+        <div class="res-body">三人目のこと、ここには書けない。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2019/07/17(水) 02:33:18 ID:Sn31d</span>
         <div class="res-body">看板の前で写真撮ったら、カメラ落ちた。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>31</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>31</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="156" id="thread-udon">
@@ -761,8 +792,8 @@
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/04/10(水) 12:45:22 ID:Ud156c</span>
         <div class="res-body">論争スレなのにレス156も草</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/04/11(木) 08:11:09 ID:Ud156d</span>
-        <div class="res-body">関係ないけど、霞ノ杜のそば屋、夏だけ営業してる。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>156</strong>件中、最新4件を表示しています。</div>
+        <div class="res-body">関係ないけど、どこかの観光地のそば屋、夏だけ営業してる。</div></div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>156</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="54" id="thread-reiapp">
@@ -775,7 +806,7 @@
         <div class="res-body">同じアプリ、山道で「看板」と反応。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/19(月) 19:11:33 ID:Ra54d</span>
         <div class="res-body">アプリ消したら通知だけ残る。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>54</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>54</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="77" id="thread-drive">
@@ -785,10 +816,10 @@
       <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2024/07/22(月) 02:01:08 ID:Dr77b</span>
         <div class="res-body">バックミラーに写らない。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/07/22(月) 02:33:55 ID:Dr77c</span>
-        <div class="res-body">霞ノ杜方面から帰る時だけ起きる。</div></div>
+        <div class="res-body">山道から帰る時だけ起きる。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/07/23(火) 08:20:11 ID:Dr77d</span>
         <div class="res-body">助手席に座らせたら軽くなった。意味わからん。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>77</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>77</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="45" id="thread-kura">
@@ -796,12 +827,12 @@
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/03/15(金) 16:02:33 ID:Kr45a</span>
         <div class="res-body">実家の蔵、段ボールの数が毎年増えてる。誰も持ち込んでない。</div></div>
       <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2024/03/15(金) 16:44:12 ID:Kr45b</span>
-        <div class="res-body">古い観光パンフと手書きのメモ。霞ノ杜の字。</div></div>
+        <div class="res-body">古い観光パンフと手書きのメモ。見たことない地名の字。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/03/16(土) 10:11:08 ID:Kr45c</span>
         <div class="res-body">メモに「ハル」だけ。説明なし。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/03/17(日) 19:22:01 ID:Kr45d</span>
         <div class="res-body">焼却しようとしたら消火器の位置だけ変わってた。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>45</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>45</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="9" id="thread-kanbanphoto" data-kn-story-clue="1">
@@ -814,7 +845,7 @@
         <div class="res-body">文字が週替わり。同じ看板なのに。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2019/07/21(日) 20:01:33 ID:Kp9d</span>
         <div class="res-body"><a href="#thread-kanban">こっちのスレ</a>にも書いてある。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>9</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>9</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="63" id="thread-camera">
@@ -827,7 +858,7 @@
         <div class="res-body">削除してもギャラリーのサムネだけ残る。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/07/02(火) 21:15:08 ID:Cm63d</span>
         <div class="res-body">ノイズ、文字に見える時ある。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>63</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>63</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="15" id="thread-oldlog" data-kn-story-clue="1">
@@ -835,25 +866,25 @@
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2019/11/05(火) 20:44:12 ID:Ol15a</span>
         <div class="res-body">2019年夏の霞ノ杜スレ、Waybackにもない。</div></div>
       <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2019/11/06(水) 07:22:01 ID:Ol15b</span>
-        <div class="res-body">個人がtxt保存してたけど、三人目の名前の行だけ文字化け。</div></div>
+        <div class="res-body">個人がtxt保存してたけど、特定の行だけ文字化け。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2019/11/06(水) 19:11:33 ID:Ol15c</span>
         <div class="res-body">記録班が依頼して消した説。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2019/11/07(木) 02:08:44 ID:Ol15d</span>
         <div class="res-body">>>1 持ってる人、無理に上げない方がいい。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>15</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>15</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="38" id="thread-hikkoshi">
       <div class="thread-head"><a href="#thread-hikkoshi">■ 引っ越し先、前の住人の荷物が残ってた</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/02/08(木) 18:33:21 ID:Hk38a</span>
-        <div class="res-body">クローゼット奥、観光案内の束。全部霞ノ杜。</div></div>
+        <div class="res-body">クローゼット奥、観光案内の束。どこかの観光地ばかり。</div></div>
       <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2024/02/08(木) 19:01:55 ID:Hk38b</span>
         <div class="res-body">前住人、行方不明らしい。管理会社も詳しく知らない。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/02/09(金) 08:22:11 ID:Hk38c</span>
         <div class="res-body">荷物返却しようとしたら住所が存在しない。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/02/10(土) 22:44:02 ID:Hk38d</span>
         <div class="res-body">箱の中、子供の靴一足だけ。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>38</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>38</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="892" id="thread-neet104">
@@ -865,8 +896,8 @@
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/05/01(水) 01:02:44 ID:Nt892c</span>
         <div class="res-body">深夜3時、隣の部屋からラジオ。住人いない。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/05/02(木) 14:33:08 ID:Nt892d</span>
-        <div class="res-body">霞ノ杜の話、なんでニートスレに混ざるんだ</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>892</strong>件中、最新4件を表示しています。</div>
+        <div class="res-body">オカルトネタ、なんでニートスレに混ざるんだ</div></div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>892</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="41" id="thread-mapbug">
@@ -879,7 +910,7 @@
         <div class="res-body">共有マップ：<a href="https://roku253.github.io/gougle-map/?full=1&amp;entry=urban-legend-board" rel="noopener">https://roku253.github.io/gougle-map/</a> に謎ピン。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/08(日) 20:33:18 ID:Mb41d</span>
         <div class="res-body">ピン、自分で置いてない。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>41</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>41</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="22" id="thread-ytdead">
@@ -887,12 +918,12 @@
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/12(月) 21:02:33 ID:Yt22a</span>
         <div class="res-body">心霊系チャンネル、動画だけ残ってアカウント消えてる。</div></div>
       <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/12(月) 21:33:08 ID:Yt22b</span>
-        <div class="res-body">最後の動画、霞ノ杜の看板だけ映してる。</div></div>
+        <div class="res-body">最後の動画、山の看板だけ映してる。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/13(火) 08:11:44 ID:Yt22c</span>
         <div class="res-body">コメ欄「まだ山の中」で埋まってる。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/13(火) 22:01:11 ID:Yt22d</span>
         <div class="res-body">復活希望はもう諦め。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>22</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>22</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="8" id="thread-anon" data-kn-story-clue="1">
@@ -902,10 +933,10 @@
       <div class="res"><span class="res-num">2</span><span class="res-name">名無しさん</span><span class="res-date">2019/10/15(火) 19:33:11 ID:An8b</span>
         <div class="res-body">両方読んでる可能性。</div></div>
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2019/10/16(水) 07:44:02 ID:An8c</span>
-        <div class="res-body">信じすぎると、消えた子の名前まで書きたくなる。</div></div>
+        <div class="res-body">信じすぎると、本名まで書きたくなる。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2019/10/16(水) 21:15:33 ID:An8d</span>
         <div class="res-body">書くな、で止めろ。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>8</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>8</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="801" id="thread-cat11">
@@ -918,7 +949,7 @@
         <div class="res-body">猫まとめ：<a href="https://roku253.github.io/yootube/" rel="noopener">https://roku253.github.io/yootube/</a></div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/03(土) 15:02:22 ID:Ct801d</span>
         <div class="res-body">801レスで伸びないの草</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>801</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>801</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="590" id="thread-sweets40">
@@ -931,7 +962,7 @@
         <div class="res-body">スイーツ以外のピン、怖い。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/03(火) 18:44:01 ID:Sw590d</span>
         <div class="res-body">590レスもう見ない</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>590</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>590</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="33" id="thread-denki">
@@ -943,8 +974,8 @@
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/07/09(火) 08:33:02 ID:Dk33c</span>
         <div class="res-body">窓に子供の影。拡大するとボケる。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/07/10(水) 21:02:11 ID:Dk33d</span>
-        <div class="res-body">霞ノ杜から引っ越してきた家、多い説。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>33</strong>件中、最新4件を表示しています。</div>
+        <div class="res-body">地方から引っ越してきた家、多い説。</div></div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>33</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="5" id="thread-lastres">
@@ -957,7 +988,7 @@
         <div class="res-body">板のバグ？ 記録班？</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2019/05/01(水) 03:36:18 ID:Lr5d</span>
         <div class="res-body">最終レス「まだ山の中」で終わってる。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>5</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>5</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="404" id="thread-knarchive" data-kn-story-clue="1">
@@ -970,7 +1001,7 @@
         <div class="res-body">404件中、半分は既に404。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2019/12/02(月) 08:15:33 ID:Ka404d</span>
         <div class="res-body">まとめ自体、来月消えるかも。</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>404</strong>件中、最新4件を表示しています。</div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>404</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <article class="thread-box" data-total-res="988" id="thread-game06">
@@ -982,8 +1013,8 @@
       <div class="res"><span class="res-num">3</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/21(水) 23:48:55 ID:Gm988c</span>
         <div class="res-body">988レス… Part.07で1000超えるな。</div></div>
       <div class="res"><span class="res-num">4</span><span class="res-name">名無しさん</span><span class="res-date">2024/08/22(木) 10:11:08 ID:Gm988d</span>
-        <div class="res-body">オフトピ：霞ノ杜マップ、ゲーム内にも似た地名ある</div></div>
-      <div class="thread-res-trunc">このスレッドは全<strong>988</strong>件中、最新4件を表示しています。</div>
+        <div class="res-body">オフトピ：ゲーム内に実在しない町名っぽいのある</div></div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>988</strong>件中、<span data-role="shown-count">4</span>件を表示しています。</div><button type="button" class="thread-load-more">さらに10件表示 ▼</button></div>
     </article>
 
     <!-- ===================== 新規スレッド（ダミー） ===================== -->
@@ -1131,7 +1162,114 @@
         });
       });
 
+      var THREAD_PAGE_SIZE = 10;
+      var FILLER_LINES = [
+        "乙", "それな", "スレ違い？", ">>1 続き", "誰かまとめて", "オフトピ失礼",
+        "マジ？", "ソース頼む", "古いスレか", "誰か残ってる？", "定期", "うp",
+        "ここも終わりか", ">>1 詳しく", "知らんけど", "草", "それガセ", "検証スレ行け"
+      ];
+
+      function threadTotalRes(box) {
+        var n = parseInt(box.getAttribute("data-total-res"), 10);
+        if (!n || n < 1) return box.querySelectorAll(".res:not(.res-generated)").length;
+        return n;
+      }
+
+      function realResponses(box) {
+        return Array.prototype.slice.call(
+          box.querySelectorAll(".res:not(.res-generated)")
+        );
+      }
+
+      function updateThreadFooter(box) {
+        var total = threadTotalRes(box);
+        var shown = parseInt(box.getAttribute("data-shown-count"), 10) || 0;
+        var trunc = box.querySelector('[data-role="trunc-msg"]');
+        var btn = box.querySelector(".thread-load-more");
+        if (shown >= total) {
+          if (trunc) {
+            trunc.innerHTML = "このスレッドは全<strong>" + total + "</strong>件を表示しています。";
+          }
+        } else if (trunc) {
+          trunc.innerHTML =
+            'このスレッドは全<strong>' +
+            total +
+            '</strong>件中、<span data-role="shown-count">' +
+            shown +
+            "</span>件を表示しています。";
+        }
+        if (btn) btn.hidden = shown >= total;
+      }
+
+      function showThrough(box, count) {
+        var all = box.querySelectorAll(".res");
+        for (var i = 0; i < all.length; i++) {
+          if (i < count) all[i].classList.remove("res-collapsed");
+          else all[i].classList.add("res-collapsed");
+        }
+        box.setAttribute("data-shown-count", String(Math.min(count, threadTotalRes(box))));
+        updateThreadFooter(box);
+      }
+
+      function appendGeneratedRes(box, num, body) {
+        var el = document.createElement("div");
+        el.className = "res res-generated res-collapsed";
+        el.innerHTML =
+          '<span class="res-num">' +
+          num +
+          '</span><span class="res-name">名無しさん</span><span class="res-date">20XX/XX/XX ID:fill' +
+          num +
+          '</span><div class="res-body">' +
+          body +
+          "</div>";
+        var footer = box.querySelector(".thread-res-footer");
+        box.insertBefore(el, footer);
+        return el;
+      }
+
+      function ensureResponseCount(box, count) {
+        var existing = box.querySelectorAll(".res").length;
+        var nextNum = existing + 1;
+        while (existing < count) {
+          var line = FILLER_LINES[(existing + nextNum) % FILLER_LINES.length];
+          appendGeneratedRes(box, nextNum, line);
+          existing++;
+          nextNum++;
+        }
+      }
+
+      function loadMoreThread(box) {
+        var total = threadTotalRes(box);
+        var shown = parseInt(box.getAttribute("data-shown-count"), 10) || 0;
+        if (shown >= total) return;
+        var target = Math.min(shown + THREAD_PAGE_SIZE, total);
+        ensureResponseCount(box, target);
+        showThrough(box, target);
+      }
+
+      function initThreadDisplay() {
+        document.querySelectorAll("article.thread-box[id]").forEach(function (box) {
+          var total = threadTotalRes(box);
+          var realLen = realResponses(box).length;
+          var initial =
+            total <= THREAD_PAGE_SIZE
+              ? Math.min(total, realLen)
+              : THREAD_PAGE_SIZE;
+          if (total > THREAD_PAGE_SIZE && realLen < initial) {
+            ensureResponseCount(box, initial);
+          }
+          showThrough(box, initial);
+          var btn = box.querySelector(".thread-load-more");
+          if (btn) {
+            btn.addEventListener("click", function () {
+              loadMoreThread(box);
+            });
+          }
+        });
+      }
+
       syncThreadCounts();
+      initThreadDisplay();
       setThreadListPage(initialListPage(), false);
       knApplyFootprint();
     })();
