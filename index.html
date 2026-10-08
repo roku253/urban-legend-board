@@ -1,4 +1,3 @@
-<user_query>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -69,8 +68,6 @@
     .thread-list[data-active-page="1"] li[data-page="1"],
     .thread-list[data-active-page="2"] li[data-page="2"],
     .thread-list[data-active-page="3"] li[data-page="3"] { display: block; }
-        .res.res-collapsed { display: none; }
-    .res.res-generated { opacity: 1; }
     .thread-res-footer {
       border-top: 1px dashed #b8a88c;
       background: #eee8dc;
@@ -83,17 +80,6 @@
       border: none;
       margin: 0;
     }
-    .thread-load-more {
-      font-family: inherit;
-      font-size: 11px;
-      padding: 3px 14px;
-      cursor: pointer;
-      background: #faf8f2;
-      border: 1px solid #b8a88c;
-      color: #0000c0;
-    }
-    .thread-load-more:hover { background: #fff; color: #c00; }
-    .thread-load-more[hidden] { display: none; }
     .thread-res-trunc {
       padding: 7px 10px;
       background: #eee8dc;
@@ -150,8 +136,19 @@
     .res-num { color: #e04040; font-weight: bold; margin-right: 6px; }
     .res-name { color: #117743; font-weight: bold; }
     .res-name.ghost { color: #888; font-style: italic; }
-    .res-date { color: #666; font-size: 11px; margin-left: 6px; }
-    .res-body { margin: 6px 0 0 1.2em; color: #222; }
+    .res-date { color: #666; font-size: 11px; margin-left: 6px; overflow-wrap: anywhere; }
+    @media (max-width: 360px) {
+      .wrap { padding: 0 6px; }
+      .res { padding: 8px 6px; }
+      .res-date { display: block; margin: 2px 0 0; }
+      .res-body { margin-left: 0; }
+    }
+    .res-body {
+      margin: 6px 0 0 1.2em;
+      color: #222;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
     .res-body .gt { color: #789922; }
     .res.res-deleted { background: #f3efe6; }
     .res.res-deleted .res-body { color: #999; font-style: italic; }
@@ -313,48 +310,48 @@
         </div>
         <ul class="thread-list" id="thread-list" data-active-page="1">
           <!-- ===== 1ページ目（霞ノ杜専用スレなし） ===== -->
-          <li data-page="1"><a href="#thread-cat">■ うちの猫の動画上げたら全然伸びないんだが Part.12</a><span class="cnt">（0）</span></li>
-          <li data-page="1"><a href="#thread-sweets">■ コンビニ新作スイーツ感想スレ Part.41</a><span class="cnt">（0）</span></li>
-          <li data-page="1"><a href="#thread-game">■ 新作RPG攻略スレ Part.07</a><span class="cnt">（0）</span></li>
-          <li data-page="1"><a href="#thread-ai">■ AI に怪談考えさせたら微妙だった Part.04</a><span class="cnt">（0）</span></li>
-          <li data-page="1"><a href="#thread-mad">■ マッド探検記 Part.88</a><span class="cnt">（234）</span></li>
-          <li data-page="1"><a href="#thread-horror-vid">■ 心霊スポット巡ってみた動画あった</a><span class="cnt">（0）</span></li>
-          <li data-page="1"><a href="#thread-neet">■ ニートの部屋　無職歴がついに西暦を超えそう Part.103</a><span class="cnt">（0）</span></li>
-          <li data-page="1"><a href="#thread-radio">■ 深夜のラジオ、変なコーナー増えてない？</a><span class="cnt">（67）</span></li>
-          <li data-page="1"><a href="#thread-konbini">■ 近所のコンビニのレジ画面に謎の英単語が出る件</a><span class="cnt">（0）</span></li>
-          <li data-page="1"><a href="#thread-matsuri">■ 地元の夏祭りスレ【提灯写真上げてけ】</a><span class="cnt">（0）</span></li>
-          <li data-page="1"><a href="#thread-remote">■ 在宅ワーク、もう外の音が怖い</a><span class="cnt">（0）</span></li>
-          <li data-page="1"><a href="#thread-oshi">■ 今期アニメ感想スレ【ネタバレあり】</a><span class="cnt">（0）</span></li>
-          <li data-page="1"><a href="#thread-konbini2">■ コンビニのレジ、英単語の件 Part.2</a><span class="cnt">（44）</span></li>
-          <li data-page="1"><a href="#thread-tetsu">■ 廃線跡歩いてきた【写真】</a><span class="cnt">（0）</span></li>
-          <li data-page="1"><a href="#thread-udon">■ うどん vs そば 永遠の戦い Part.55</a><span class="cnt">（156）</span></li>
+          <li data-page="1"><a href="#thread-cat">■ うちの猫の動画上げたら全然伸びないんだが Part.12</a><span class="cnt">（15）</span></li>
+          <li data-page="1"><a href="#thread-sweets">■ コンビニ新作スイーツ感想スレ Part.41</a><span class="cnt">（18）</span></li>
+          <li data-page="1"><a href="#thread-game">■ 新作RPG攻略スレ Part.07</a><span class="cnt">（38）</span></li>
+          <li data-page="1"><a href="#thread-ai">■ AI に怪談考えさせたら微妙だった Part.04</a><span class="cnt">（13）</span></li>
+          <li data-page="1"><a href="#thread-mad">■ マッド探検記 Part.88</a><span class="cnt">（12）</span></li>
+          <li data-page="1"><a href="#thread-horror-vid">■ 心霊スポット巡ってみた動画あった</a><span class="cnt">（10）</span></li>
+          <li data-page="1"><a href="#thread-neet">■ ニートの部屋　無職歴がついに西暦を超えそう Part.103</a><span class="cnt">（35）</span></li>
+          <li data-page="1"><a href="#thread-radio">■ 深夜のラジオ、変なコーナー増えてない？</a><span class="cnt">（12）</span></li>
+          <li data-page="1"><a href="#thread-konbini">■ 近所のコンビニのレジ画面に謎の英単語が出る件</a><span class="cnt">（10）</span></li>
+          <li data-page="1"><a href="#thread-matsuri">■ 地元の夏祭りスレ【提灯写真上げてけ】</a><span class="cnt">（12）</span></li>
+          <li data-page="1"><a href="#thread-remote">■ 在宅ワーク、もう外の音が怖い</a><span class="cnt">（10）</span></li>
+          <li data-page="1"><a href="#thread-oshi">■ 今期アニメ感想スレ【ネタバレあり】</a><span class="cnt">（11）</span></li>
+          <li data-page="1"><a href="#thread-konbini2">■ コンビニのレジ、英単語の件 Part.2</a><span class="cnt">（8）</span></li>
+          <li data-page="1"><a href="#thread-tetsu">■ 廃線跡歩いてきた【写真】</a><span class="cnt">（10）</span></li>
+          <li data-page="1"><a href="#thread-udon">■ うどん vs そば 永遠の戦い Part.55</a><span class="cnt">（30）</span></li>
           <!-- ===== 2ページ目 ===== -->
-          <li data-page="2"><a href="#thread-bouhan">■ 一人暮らしの防犯、もう限界 Part.19</a><span class="cnt">（89）</span></li>
-          <li data-page="2" data-kn-list-clue="1"><a href="#thread-news">■ 【2019】霞ノ杜・神隠し伝言</a><span class="cnt">（0）</span></li>
-          <li data-page="2"><a href="#thread-kankou">■ 【霞ノ杜】古い観光案内に写ってない子</a><span class="cnt">（18）</span></li>
+          <li data-page="2"><a href="#thread-bouhan">■ 一人暮らしの防犯、もう限界 Part.19</a><span class="cnt">（10）</span></li>
+          <li data-page="2" data-kn-list-clue="1"><a href="#thread-news">■ 【2019】霞ノ杜・神隠し伝言</a><span class="cnt">（32）</span></li>
+          <li data-page="2"><a href="#thread-kankou">■ 【霞ノ杜】古い観光案内に写ってない子</a><span class="cnt">（6）</span></li>
           <li data-page="2"><a href="#thread-kiroku">■ 記録班って知ってる？</a><span class="cnt">（12）</span></li>
-          <li data-page="2"><a href="#thread-rosen">■ 終電後にしか走らない路線バスってある？</a><span class="cnt">（0）</span></li>
-          <li data-page="2"><a href="#thread-furuhon">■ 古本屋で変な紙挟まってた経験ある？</a><span class="cnt">（0）</span></li>
-          <li data-page="2"><a href="#thread-vending">■ うちの最寄り駅、自販機に幽霊出るらしい</a><span class="cnt">（0）</span></li>
-          <li data-page="2"><a href="#thread-ramen">■ 深夜に食べたくなるラーメン挙げてけ</a><span class="cnt">（0）</span></li>
-          <li data-page="2"><a href="#thread-ekikoe">■ 駅のホームで聞こえる声【音源なし】</a><span class="cnt">（23）</span></li>
-          <li data-page="2"><a href="#thread-reiapp">■ 心霊アプリ、当たりすぎて逆に怖い</a><span class="cnt">（54）</span></li>
-          <li data-page="2"><a href="#thread-drive">■ 深夜ドライブ、後部座席が重い</a><span class="cnt">（77）</span></li>
-          <li data-page="2"><a href="#thread-game06">■ 新作RPG Part.06【アーカイブ】</a><span class="cnt">（988）</span></li>
+          <li data-page="2"><a href="#thread-rosen">■ 終電後にしか走らない路線バスってある？</a><span class="cnt">（10）</span></li>
+          <li data-page="2"><a href="#thread-furuhon">■ 古本屋で変な紙挟まってた経験ある？</a><span class="cnt">（10）</span></li>
+          <li data-page="2"><a href="#thread-vending">■ うちの最寄り駅、自販機に幽霊出るらしい</a><span class="cnt">（8）</span></li>
+          <li data-page="2"><a href="#thread-ramen">■ 深夜に食べたくなるラーメン挙げてけ</a><span class="cnt">（12）</span></li>
+          <li data-page="2"><a href="#thread-ekikoe">■ 駅のホームで聞こえる声【音源なし】</a><span class="cnt">（8）</span></li>
+          <li data-page="2"><a href="#thread-reiapp">■ 心霊アプリ、当たりすぎて逆に怖い</a><span class="cnt">（8）</span></li>
+          <li data-page="2"><a href="#thread-drive">■ 深夜ドライブ、後部座席が重い</a><span class="cnt">（8）</span></li>
+          <li data-page="2"><a href="#thread-game06">■ 新作RPG Part.06【アーカイブ】</a><span class="cnt">（5）</span></li>
           <!-- ===== 3ページ目 ===== -->
-          <li data-page="3"><a href="#thread-kura">■ 実家の蔵、整理中に箱が多すぎる</a><span class="cnt">（45）</span></li>
-          <li data-page="3"><a href="#thread-camera">■ スマホカメラ、写ってないはずのノイズ</a><span class="cnt">（63）</span></li>
-          <li data-page="3"><a href="#thread-oldlog">■ 昔の裏板ログ、誰か保存してる？</a><span class="cnt">（15）</span></li>
-          <li data-page="3"><a href="#thread-hikkoshi">■ 引っ越し先、前の住人の荷物が残ってた</a><span class="cnt">（38）</span></li>
-          <li data-page="3"><a href="#thread-neet104">■ ニートの部屋 Part.104【西暦更新】</a><span class="cnt">（892）</span></li>
-          <li data-page="3"><a href="#thread-mapbug">■ 地図アプリ、存在しない道を案内する</a><span class="cnt">（41）</span></li>
-          <li data-page="3"><a href="#thread-ytdead">■ 消えた系ユーチューバー、復活しない</a><span class="cnt">（22）</span></li>
+          <li data-page="3"><a href="#thread-kura">■ 実家の蔵、整理中に箱が多すぎる</a><span class="cnt">（8）</span></li>
+          <li data-page="3"><a href="#thread-camera">■ スマホカメラ、写ってないはずのノイズ</a><span class="cnt">（8）</span></li>
+          <li data-page="3"><a href="#thread-oldlog">■ 昔の裏板ログ、誰か保存してる？</a><span class="cnt">（12）</span></li>
+          <li data-page="3"><a href="#thread-hikkoshi">■ 引っ越し先、前の住人の荷物が残ってた</a><span class="cnt">（8）</span></li>
+          <li data-page="3"><a href="#thread-neet104">■ ニートの部屋 Part.104【西暦更新】</a><span class="cnt">（8）</span></li>
+          <li data-page="3"><a href="#thread-mapbug">■ 地図アプリ、存在しない道を案内する</a><span class="cnt">（8）</span></li>
+          <li data-page="3"><a href="#thread-ytdead">■ 消えた系ユーチューバー、復活しない</a><span class="cnt">（8）</span></li>
           <li data-page="3"><a href="#thread-anon">■ 匿名情報、どこまで信じていい？</a><span class="cnt">（8）</span></li>
-          <li data-page="3"><a href="#thread-cat11">■ 猫動画 Part.11【伸びない】</a><span class="cnt">（801）</span></li>
-          <li data-page="3"><a href="#thread-sweets40">■ コンビニスイーツ Part.40</a><span class="cnt">（590）</span></li>
-          <li data-page="3"><a href="#thread-denki">■ 誰もいないはずの家、電気ついてた</a><span class="cnt">（33）</span></li>
+          <li data-page="3"><a href="#thread-cat11">■ 猫動画 Part.11【伸びない】</a><span class="cnt">（6）</span></li>
+          <li data-page="3"><a href="#thread-sweets40">■ コンビニスイーツ Part.40</a><span class="cnt">（5）</span></li>
+          <li data-page="3"><a href="#thread-denki">■ 誰もいないはずの家、電気ついてた</a><span class="cnt">（5）</span></li>
           <li data-page="3"><a href="#thread-lastres">■ 最終レスだけ残ってるスレ</a><span class="cnt">（5）</span></li>
-          <li data-page="3"><a href="#thread-knarchive">■ 【過去ログ】霞ノ杜関連スレまとめ</a><span class="cnt">（404）</span></li>
+          <li data-page="3"><a href="#thread-knarchive">■ 【過去ログ】霞ノ杜関連スレまとめ</a><span class="cnt">（8）</span></li>
         </ul>
         <div class="thread-pager" id="thread-pager-bottom" aria-label="スレッド一覧ページ">
           <span class="pager-label">ページ</span>
@@ -592,11 +589,11 @@
         <div class="res-body">2周目終わった。テキスト差分、かなりある。</div></div>
       <div class="res"><span class="res-num">40</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/28(土) 19:02:11 ID:Gm7an</span>
         <div class="res-body">1031レスまで付き合うか。</div></div>
-      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>40</strong>件を表示しています。</div></div>
+      <div class="thread-res-footer"><div class="thread-res-trunc" data-role="trunc-msg">このスレッドは全<strong>38</strong>件を表示しています。</div></div>
     </article>
 
     <!-- ===================== カモ：AI ===================== -->
-        <article class="thread-box" data-total-res="14" id="thread-ai">
+        <article class="thread-box" data-total-res="13" id="thread-ai">
       <div class="thread-head"><a href="#thread-ai">■ AI に怪談考えさせたら微妙だった Part.04</a></div>
       <div class="res"><span class="res-num">1</span><span class="res-name">名無しさん</span><span class="res-date">2024/09/22(日) 13:00:15 ID:Ai4a</span>
         <div class="res-body">最後のオチが「家には誰もいなかった」しか言わない。何が起きてもオチ同じ。</div></div>
@@ -1584,15 +1581,28 @@
         var f = knFootprint();
         return f === "purged_delete" || f === "purged_keep" || f === "purged_partial";
       }
+      function countResponses(box) {
+        var n = 0;
+        var children = box.children;
+        for (var i = 0; i < children.length; i++) {
+          var el = children[i];
+          if (!el.classList || !el.classList.contains("res")) continue;
+          if (el.classList.contains("res-generated")) continue;
+          n++;
+        }
+        return n;
+      }
       function syncThreadCounts() {
         document.querySelectorAll("article.thread-box[id]").forEach(function (box) {
-          var totalAttr = box.getAttribute("data-total-res");
-          var count = totalAttr ? parseInt(totalAttr, 10) : box.querySelectorAll(".res").length;
-          if (!count || count < 1) count = box.querySelectorAll(".res").length;
+          var count = countResponses(box);
           document.querySelectorAll('.thread-list a[href="#' + box.id + '"]').forEach(function (link) {
             var cnt = link.parentElement && link.parentElement.querySelector(".cnt");
             if (cnt) cnt.textContent = "（" + count + "）";
           });
+          var trunc = box.querySelector('[data-role="trunc-msg"]');
+          if (trunc) {
+            trunc.innerHTML = "このスレッドは全<strong>" + count + "</strong>件を表示しています。";
+          }
         });
       }
       function parsePageFromLocation() {
@@ -1690,110 +1700,7 @@
         });
       });
 
-      var THREAD_PAGE_SIZE = 10;
-      var FILLER_LINES = [];
-
-      function threadTotalRes(box) {
-        var n = parseInt(box.getAttribute("data-total-res"), 10);
-        if (!n || n < 1) return box.querySelectorAll(".res:not(.res-generated)").length;
-        return n;
-      }
-
-      function realResponses(box) {
-        return Array.prototype.slice.call(
-          box.querySelectorAll(".res:not(.res-generated)")
-        );
-      }
-
-      function updateThreadFooter(box) {
-        var total = threadTotalRes(box);
-        var shown = parseInt(box.getAttribute("data-shown-count"), 10) || 0;
-        var trunc = box.querySelector('[data-role="trunc-msg"]');
-        var btn = box.querySelector(".thread-load-more");
-        if (shown >= total) {
-          if (trunc) {
-            trunc.innerHTML = "このスレッドは全<strong>" + total + "</strong>件を表示しています。";
-          }
-        } else if (trunc) {
-          trunc.innerHTML =
-            'このスレッドは全<strong>' +
-            total +
-            '</strong>件中、<span data-role="shown-count">' +
-            shown +
-            "</span>件を表示しています。";
-        }
-        if (btn) btn.hidden = shown >= total;
-      }
-
-      function showThrough(box, count) {
-        var all = box.querySelectorAll(".res");
-        for (var i = 0; i < all.length; i++) {
-          if (i < count) all[i].classList.remove("res-collapsed");
-          else all[i].classList.add("res-collapsed");
-        }
-        box.setAttribute("data-shown-count", String(Math.min(count, threadTotalRes(box))));
-        updateThreadFooter(box);
-      }
-
-      function appendGeneratedRes(box, num, body) {
-        var el = document.createElement("div");
-        el.className = "res res-generated res-collapsed";
-        el.innerHTML =
-          '<span class="res-num">' +
-          num +
-          '</span><span class="res-name">名無しさん</span><span class="res-date">20XX/XX/XX ID:fill' +
-          num +
-          '</span><div class="res-body">' +
-          body +
-          "</div>";
-        var footer = box.querySelector(".thread-res-footer");
-        box.insertBefore(el, footer);
-        return el;
-      }
-
-      function ensureResponseCount(box, count) {
-        var existing = box.querySelectorAll(".res").length;
-        var nextNum = existing + 1;
-        while (existing < count) {
-          var line = FILLER_LINES[(existing + nextNum) % FILLER_LINES.length];
-          appendGeneratedRes(box, nextNum, line);
-          existing++;
-          nextNum++;
-        }
-      }
-
-      function loadMoreThread(box) {
-        var total = threadTotalRes(box);
-        var shown = parseInt(box.getAttribute("data-shown-count"), 10) || 0;
-        if (shown >= total) return;
-        var target = Math.min(shown + THREAD_PAGE_SIZE, total);
-        ensureResponseCount(box, target);
-        showThrough(box, target);
-      }
-
-      function initThreadDisplay() {
-        document.querySelectorAll("article.thread-box[id]").forEach(function (box) {
-          var total = threadTotalRes(box);
-          var realLen = realResponses(box).length;
-          var initial =
-            total <= THREAD_PAGE_SIZE
-              ? Math.min(total, realLen)
-              : THREAD_PAGE_SIZE;
-          if (total > THREAD_PAGE_SIZE && realLen < initial) {
-            ensureResponseCount(box, initial);
-          }
-          showThrough(box, initial);
-          var btn = box.querySelector(".thread-load-more");
-          if (btn) {
-            btn.addEventListener("click", function () {
-              loadMoreThread(box);
-            });
-          }
-        });
-      }
-
       syncThreadCounts();
-      initThreadDisplay();
       setThreadListPage(initialListPage(), false);
       knApplyFootprint();
     })();
